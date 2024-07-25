@@ -18,10 +18,9 @@ const AuthLayout = () => {
     <>
       <div className="h-sreen">
           {/* <Navbar /> */}
-          <SearchBar />
+        <SearchBar />
         <Outlet />
         <Toaster className="text-lg" position='top-left'/>
-
       </div>
     </>
   )

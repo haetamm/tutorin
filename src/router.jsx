@@ -8,6 +8,7 @@ import RegisterStudent from "./pages/RegisterStudent"
 import AuthLayout from "./layout/AuthLayout"
 import Home from "./pages/Home"
 import JobDetail from "./pages/JobDetail"
+import JobDetailMobile from "./pages/JobDetailMobile"
 
 const routerConfig = [
     {
@@ -37,6 +38,10 @@ const routerConfig = [
                 ],
             },
         ],
+    },
+    {
+        path: '/m/tutorin/:id',
+        element: <JobDetailMobile />
     },
     {
         path: '/auth',

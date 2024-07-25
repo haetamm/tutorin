@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import { urlPage } from '../utils/constans';
 
 const Home = () => {
   const location = useLocation();
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
     <div className="flex overflow-auto h-screen pt-[136px] md:pt-[80px] flex-1">
-      <div className="flex w-full flex-col overflow-auto lg:w-1/3 border-3 border-r-2 border-black">
+      <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 border-r-2 border-black">
         <div className="flex-auto overflow-auto">
           <ul className="flex-1 overflow-hidden">
             {[...Array(30)].map((_, index) => {
-              const path = `${urlPage.JOB_DETAIL}/${index + 1}`;
+              const path = isMobile
+                ? `${urlPage.JOB_DETAIL_MOBILE}/${index + 1}`
+                : `${urlPage.JOB_DETAIL}/${index + 1}`;
               const isActive = location.pathname === path;
 
               return (
@@ -37,10 +41,8 @@ const Home = () => {
           {/* Additional content or navigation */}
         </div>
       </div>
-      <div className="hidden w-2/3 overflow-auto lg:block">
-          <div className="hidden md:block">
-            <Outlet />
-          </div>
+      <div className="hidden w-[69%] overflow-auto lg:block">
+        <Outlet />
       </div>
     </div>
   );
