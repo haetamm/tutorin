@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { urlPage } from '../utils/constans'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import Sidebar from '../component/Sidebar'
 
 const Student = () => {
@@ -14,7 +14,8 @@ const Student = () => {
 
     return (
         <>
-                   <Sidebar />
+            <Sidebar />
+            <Outlet />
         </>
     )
 }

@@ -5,5 +5,6 @@ export const urlPage = {
     "HOME": "/in/home",
     "JOB_DETAIL": "/in/home/job",
     "JOB_DETAIL_MOBILE": "/m/tutorin",
-    "STUDENT": "/in/student"
+    "STUDENT": "/in/student",
+    "STUDENT_PROFILE": '/in/student/profile'
 }

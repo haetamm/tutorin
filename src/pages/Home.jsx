@@ -11,7 +11,7 @@ const Home = () => {
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 1023 });
 
-  if (role !== "tutor") {
+  if (role !== "tutor" && role !== "superadmin" ) {
     return <Navigate to={`${urlPage.STUDENT}`} />
   }
 

@@ -10,6 +10,7 @@ import Home from "./pages/Home"
 import JobDetail from "./pages/JobDetail"
 import JobDetailMobile from "./pages/JobDetailMobile"
 import Student from "./pages/Student"
+import { Profile } from "./pages/Profile"
 
 const routerConfig = [
     {
@@ -40,7 +41,13 @@ const routerConfig = [
             },
             {
                 path: 'student',
-                element: <Student />
+                element: <Student />,
+                children: [
+                    {
+                        path: 'profile',
+                        element: <Profile />
+                    }
+                ]
             }
         ],
     },
