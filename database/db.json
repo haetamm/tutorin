@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "haetami@gmail.com",
+      "password": "admin",
+      "role": "superadmin"
+    },
+    {
+      "id": "2",
+      "email": "studen1",
+      "password": "studen",
+      "role": "student"
+    },
+    {
+      "id": "3",
+      "email": "tutor1",
+      "password": "tutor",
+      "role": "tutor"
+    },
+    {
+      "id": "d2d4",
+      "email": "haeatami@gmail.com",
+      "password": "admin",
+      "role": "student"
+    }
+  ]
+}
