@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
-import { Toaster } from 'sonner';
-import { urlPage } from '../utils/constans';
-// import Navbar from '../component/Navbar';
-import SearchBar from '../component/SearchBar';
+import { useSelector } from 'react-redux'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { Toaster } from 'sonner'
+import { urlPage } from '../utils/constans'
+import Navbar from '../component/Navbar'
 
 const AuthLayout = () => {
-    const { token } = useSelector((state) => state.user);
-    console.log(token)
+  const { token } = useSelector((state) => state.user);
+  const { pathname } = useLocation()
+  console.log(pathname)
   
   if (!token) {
     return <Navigate to={`${urlPage.LOGIN}`} />;
@@ -16,12 +16,9 @@ const AuthLayout = () => {
 
   return (
     <>
-      <div className="h-sreen">
-          {/* <Navbar /> */}
-        <SearchBar />
-        <Outlet />
-        <Toaster className="text-lg" position='top-left'/>
-      </div>
+      <Navbar />
+      <Outlet />
+      <Toaster className="text-lg" position='top-left'/>
     </>
   )
 }

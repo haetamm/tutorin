@@ -43,7 +43,7 @@ const SearchBar = () => {
     }, []);
 
     return (
-        <div className="flex bg-blue-200 py-4 justify-center items-center fixed w-full">
+        <div className="flex bg-blue-200 py-4 justify-center items-center  w-full">
             <div className="inline-block md:flex w-[96%] gap-1">
                 <div className="w-full h-[50px] mb-1 md:mb-0">
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>

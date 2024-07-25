@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 import { registerFormSchema } from '../utils/validation.js'
 import { MdEmail } from 'react-icons/md'
 import { IoIosEyeOff } from 'react-icons/io'
+import { FaRegUserCircle } from 'react-icons/fa'
 
 const RegisterStudent = () => {
     const [loading, setLoading] = useState(false);
@@ -37,6 +38,7 @@ const RegisterStudent = () => {
     };
 
     const fields = [
+        { name: 'name', type: 'text', placeholder: 'Name', icon: FaRegUserCircle },
         { name: 'email', type: 'email', placeholder: 'Email', icon: MdEmail },
         { name: 'password', type: 'password', placeholder: 'Password', icon: IoIosEyeOff },
     ];

@@ -3,26 +3,36 @@
     {
       "id": "1",
       "email": "haetami@gmail.com",
+      "name": "Tatang Haetami",
       "password": "admin",
       "role": "superadmin"
     },
     {
-      "id": "2",
-      "email": "studen1",
-      "password": "studen",
-      "role": "student"
-    },
-    {
-      "id": "3",
-      "email": "tutor1",
+      "id": "550c",
+      "name": "Haetami",
+      "email": "tutor@gmail.com",
       "password": "tutor",
       "role": "tutor"
     },
     {
-      "id": "d2d4",
-      "email": "haeatami@gmail.com",
-      "password": "admin",
+      "id": "f356",
+      "name": "Aming",
+      "email": "student@gmail.com",
+      "password": "student",
       "role": "student"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "studentId": "d2d4",
+      "totorIds": [],
+      "title": "Guru Matematika",
+      "createdAt": "12 Januari 2024",
+      "exprired": "27 Juli 2014",
+      "updatedAt": null,
+      "addrees": "Jl. Raya Rancaekek KM 24. 5 Kav. D3 & D5, Rancaekek, Sawahdadap, Kec. Cimanggung, Kabupaten Sumedang, Jawa Barat",
+      "jobDescription": "Mengoperasikan mesin untuk menggabungkan cover dan isi melalui teknik penjilidan. Melaporkan kegiatan dan hasil produksi melalui pengisian Trax, logbook, laporan produksi, dan laporan penyimpangan guna mengevaluasi proses produksi. Mengoperasikan mesin Sheet dan mengatasi gangguan produksi untuk kelancaran hasil produksi."
     }
   ]
 }

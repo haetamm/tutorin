@@ -9,19 +9,20 @@ import AuthLayout from "./layout/AuthLayout"
 import Home from "./pages/Home"
 import JobDetail from "./pages/JobDetail"
 import JobDetailMobile from "./pages/JobDetailMobile"
+import Student from "./pages/Student"
 
 const routerConfig = [
     {
         path: '/',
         element: <LandingPage />
     },
-     {
+    {
         path: '/in',
         element: <AuthLayout />,
         children: [
             {
                 path: '',
-                element: <Navigate to='home' replace />,
+                element: <Navigate to='student' replace />,
             },
             {
                 path: 'home',
@@ -37,6 +38,10 @@ const routerConfig = [
                     },
                 ],
             },
+            {
+                path: 'student',
+                element: <Student />
+            }
         ],
     },
     {

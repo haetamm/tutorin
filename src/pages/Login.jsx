@@ -29,13 +29,14 @@ const Login = () => {
             const user = users.find(u => u.email === data.email && u.password === data.password);
             
             if (user) {
-                const { id, role } = user;
-                const token = generateToken(id, role);
+                const { id, role, name } = user;
+                const token = generateToken(id, name, role);
                 Cookies.set('token', token);
                 dispatch({
                     type: 'LOGIN',
                     payload: {
                         userId: id,
+                        name: name,
                         role: role,
                         token: token,
                     },
