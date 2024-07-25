@@ -1,7 +1,17 @@
 import React from 'react'
 
-export const Profile = () => {
-  return (
-    <div>Profile</div>
+const Profile = () => {
+    return (
+        <>
+            <div className="h-[50px]"></div>
+            <div className="ml-16 md:ml-[210px]">
+                {/* code disini */}
+                <p>Hallo</p>
+            </div>
+        </>
   )
 }
+
+export default Profile
+
+

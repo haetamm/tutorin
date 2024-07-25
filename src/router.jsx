@@ -10,7 +10,8 @@ import Home from "./pages/Home"
 import JobDetail from "./pages/JobDetail"
 import JobDetailMobile from "./pages/JobDetailMobile"
 import Student from "./pages/Student"
-import { Profile } from "./pages/Profile"
+import Profile from "./pages/Profile"
+import Message from "./pages/Message"
 
 const routerConfig = [
     {
@@ -46,6 +47,10 @@ const routerConfig = [
                     {
                         path: 'profile',
                         element: <Profile />
+                    },
+                    {
+                        path: 'messages',
+                        element: <Message />
                     }
                 ]
             }
