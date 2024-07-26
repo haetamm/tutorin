@@ -8,7 +8,8 @@ import Navbar from '../component/Navbar'
 const AuthLayout = () => {
   const { token } = useSelector((state) => state.user);
   const { pathname } = useLocation()
-  console.log(pathname)
+  
+  const isStudentMessagePage = pathname.startsWith(urlPage.STUDENT_MESSAGE);
   
   if (!token) {
     return <Navigate to={`${urlPage.LOGIN}`} />;
@@ -16,7 +17,7 @@ const AuthLayout = () => {
 
   return (
     <>
-      <Navbar />
+      {!isStudentMessagePage && <Navbar />}
       <Outlet />
       <Toaster className="text-lg" position='top-left'/>
     </>

@@ -12,6 +12,8 @@ import JobDetailMobile from "./pages/JobDetailMobile"
 import Student from "./pages/Student"
 import Profile from "./pages/Profile"
 import Message from "./pages/Message"
+import MessageDetail from "./pages/MessageDetail"
+import MessageDetailMobile from "./pages/MessageDetailMobile"
 
 const routerConfig = [
     {
@@ -50,7 +52,17 @@ const routerConfig = [
                     },
                     {
                         path: 'messages',
-                        element: <Message />
+                        element: <Message />,
+                        children: [
+                        {
+                            path: '', // When 'messages' is accessed directly
+                            element: <Navigate to='1' replace />, // Redirect to 'messages/1'
+                        },
+                        {
+                            path: ':id', // For specific message IDs
+                            element: <MessageDetail />,
+                        },
+                        ]
                     }
                 ]
             }
@@ -59,6 +71,10 @@ const routerConfig = [
     {
         path: '/m/tutorin/:id',
         element: <JobDetailMobile />
+    },
+    {
+        path: '/m/messages/:id',
+        element: <MessageDetailMobile />
     },
     {
         path: '/auth',

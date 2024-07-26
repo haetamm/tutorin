@@ -7,5 +7,6 @@ export const urlPage = {
     "JOB_DETAIL_MOBILE": "/m/tutorin",
     "STUDENT": "/in/student",
     "STUDENT_PROFILE": '/in/student/profile',
-    "STUDENT_MESSAGE": '/in/student/messages'
+    "STUDENT_MESSAGE": '/in/student/messages',
+    "STUDENT_MESSAGE_MOBILE": '/m/messages'
 }

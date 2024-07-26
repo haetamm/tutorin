@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Home = () => {
   const { role } = useSelector((state) => state.user)
-  console.log(role)
-
+  
   const location = useLocation();
   const isMobile = useMediaQuery({ maxWidth: 1023 });
 
