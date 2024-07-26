@@ -5,10 +5,12 @@ import SearchBar from './SearchBar'
 import { IoIosMail } from 'react-icons/io'
 import { IoSettingsSharp } from 'react-icons/io5'
 import { urlPage } from '../utils/constans'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
     const { pathname } = useLocation()
     const isJobDetailPage = pathname.startsWith(urlPage.JOB_DETAIL)
+    const { role } = useSelector((state) => state.user)
     
     return (
         <>
@@ -22,8 +24,13 @@ const Navbar = () => {
                         </div>
                         <div className="flex justify-end">
                             <div className="text-white flex items-center xs:mx-0">
-                                <IoIosMail className="h-8 w-8 cursor-pointer mr-5" />
-                                <IoSettingsSharp className="h-7 w-7"/>
+                                <Link to={role === "student" ? urlPage.STUDENT_MESSAGE : urlPage.TUTOR_MESSAGE}>
+                                    <IoIosMail className="h-8 w-8 cursor-pointer mr-5" />
+                                </Link>
+                                <Link to={role === "role" ? urlPage.STUDENT_PROFILE : urlPage.TUTOR_PROFILE}>
+                                    <IoSettingsSharp className="h-7 w-7"/>
+                                </Link>
+                                
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ import Profile from "./pages/Profile"
 import Message from "./pages/Message"
 import MessageDetail from "./pages/MessageDetail"
 import MessageDetailMobile from "./pages/MessageDetailMobile"
+import Tutor from "./pages/Tutor"
 
 const routerConfig = [
     {
@@ -43,8 +44,8 @@ const routerConfig = [
                 ],
             },
             {
-                path: 'student',
-                element: <Student />,
+                path: 'tutor',
+                element: <Tutor />,
                 children: [
                     {
                         path: 'profile',
@@ -62,6 +63,30 @@ const routerConfig = [
                             path: ':id', // For specific message IDs
                             element: <MessageDetail />,
                         },
+                        ]
+                    }
+                ]
+            },
+            {
+                path: 'student',
+                element: <Student />,
+                children: [
+                    {
+                        path: 'profile',
+                        element: <Profile />
+                    },
+                    {
+                        path: 'messages',
+                        element: <Message />,
+                        children: [
+                            {
+                                path: '', // When 'messages' is accessed directly
+                                element: <Navigate to='1' replace />, // Redirect to 'messages/1'
+                            },
+                            {
+                                path: ':id', // For specific message IDs
+                                element: <MessageDetail />,
+                            },
                         ]
                     }
                 ]

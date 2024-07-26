@@ -5,12 +5,12 @@ import { useMediaQuery } from 'react-responsive';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const MessageDetailComp = ({ id }) => {
-    const isMobile = useMediaQuery({ maxWidth: 1023 })
-    const history = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: 1023 })
+  const history = useNavigate();
 
-    const handleBack = () => {
-        history(-1);
-    };
+  const handleBack = () => {
+      history(-1);
+  };
 
   return (
     <>
@@ -24,7 +24,7 @@ const MessageDetailComp = ({ id }) => {
                     <div className="flex gap-1 text-caption">
                         <div>Online about 9 hours ago</div>
                         <button className="text-primary-color hover:underline">
-                        1 application
+                          1 application
                         </button>
                     </div>
                 </div>
@@ -64,22 +64,11 @@ const MessageDetailComp = ({ id }) => {
                           </div>
                           <div className="flex p-2 gap-2">
                             <div className="w-1/5 justify-center items-center text-center py-2">
-                              {/* <img
-                                alt="Company logo"
-                                className="object-contain mx-auto"
-                                src="https://rec-data.kalibrr.com/www.kalibrr.com/logos/FM38QE7KJHWN3FARYB2KZWWDS89YCVYQPLLL75AR-65a8fb51.png"
-                              /> */}
                             </div>
                             <div className="k-w-4/5 text-start">
-                              {/* <Link
-                                to="/candidate/applications"
-                                target="_blank"
-                                className="w-full"
-                              > */}
                                 <button className="btn-outline border-primary-color text-primary-color w-full capitalize">
                                   Frontend Web Developer
                                 </button>
-                              {/* </Link> */}
                               <p>Jendela Group</p>
                             </div>
                           </div>
