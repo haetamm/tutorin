@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import '../styles/pages/login.scss';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { urlPage } from '../utils/constans';
-import { loginFormSchema } from '../utils/validation.js';
-import axiosInstance from '../utils/api';
-import { generateToken } from '../utils/security';
-import { toast } from 'sonner';
-import { useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { MdEmail } from 'react-icons/md';
-import FormControllerInput from '../component/FormControllerInput';
-import { IoIosEyeOff } from 'react-icons/io';
+import React, { useState } from 'react'
+import '../styles/pages/login.scss'
+import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
+import { urlPage } from '../utils/constans'
+import { loginFormSchema } from '../utils/validation.js'
+import axiosInstance from '../utils/api'
+import { generateToken } from '../utils/security'
+import { toast } from 'sonner'
+import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { MdEmail } from 'react-icons/md'
+import FormControllerInput from '../component/FormControllerInput'
+import { IoIosEyeOff } from 'react-icons/io'
 
 const Login = () => {
     const dispatch = useDispatch();

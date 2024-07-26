@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../styles/pages/login.scss'
 import { Link } from 'react-router-dom'
 import { urlPage } from '../utils/constans.js'
 import { useForm } from 'react-hook-form'
@@ -11,6 +10,8 @@ import { registerFormSchema } from '../utils/validation.js'
 import { MdEmail } from 'react-icons/md'
 import { IoIosEyeOff } from 'react-icons/io'
 import { FaRegUserCircle } from 'react-icons/fa'
+
+import '../styles/pages/login.scss'
 
 const RegisterTutor = () => {
     const [loading, setLoading] = useState(false);
