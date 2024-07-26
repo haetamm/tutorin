@@ -15,6 +15,7 @@ import Message from "./pages/Message"
 import MessageDetail from "./pages/MessageDetail"
 import MessageDetailMobile from "./pages/MessageDetailMobile"
 import Tutor from "./pages/Tutor"
+import CreateJob from "./pages/CreateJob"
 
 const routerConfig = [
     {
@@ -56,11 +57,11 @@ const routerConfig = [
                         element: <Message />,
                         children: [
                         {
-                            path: '', // When 'messages' is accessed directly
-                            element: <Navigate to='1' replace />, // Redirect to 'messages/1'
+                            path: '', 
+                            element: <Navigate to='1' replace />, 
                         },
                         {
-                            path: ':id', // For specific message IDs
+                            path: ':id', 
                             element: <MessageDetail />,
                         },
                         ]
@@ -80,14 +81,18 @@ const routerConfig = [
                         element: <Message />,
                         children: [
                             {
-                                path: '', // When 'messages' is accessed directly
-                                element: <Navigate to='1' replace />, // Redirect to 'messages/1'
+                                path: '', 
+                                element: <Navigate to='1' replace />, 
                             },
                             {
-                                path: ':id', // For specific message IDs
+                                path: ':id', 
                                 element: <MessageDetail />,
                             },
                         ]
+                    },
+                    {
+                        path: 'create/job',
+                        element: <CreateJob />
                     }
                 ]
             }

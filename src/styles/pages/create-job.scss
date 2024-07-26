@@ -1,0 +1,242 @@
+.select-option-custom {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.error {
+    color: red;
+}
+
+.work-form {
+    .header {
+        padding: 10px 0 10px 0;
+        background-color: #232d3f;
+        border-radius: 5px;
+        color: white;
+        padding: 10px;
+    }
+
+    .wrap-form {
+        padding: 0.5rem;
+        gap: 0.5rem;
+        flex-direction: column;
+        display: flex;
+        margin-top: 3px;
+
+        .wrap-selected {
+            gap: 0.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.wrap-input {
+    margin-bottom: 8px;
+
+    .title-label {
+        display: flex;
+
+        .title {
+            text-transform: capitalize;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 17px;
+        }
+    }
+
+    .select-wrap {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+.wrap-checkbox {
+    display: flex;
+    align-items: center;
+
+    .custom-checkbox {
+        margin: 0 0.5rem 0 0;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.wrap-textarea {
+    margin: 5px 0 10px 0;
+
+    .textarea-custom {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px 20px 15px 20px;
+        border-radius: 0.25rem;
+        font-size: 17px;
+        font-family: "Gabarito", sans-serif;
+        white-space: pre-line;
+    }
+}
+
+.wrap-job {
+    margin-bottom: 0.3rem;
+    align-items: center;
+
+    .wrap-job-title {
+        text-transform: capitalize;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 17px;
+        margin-right: 0.5rem;
+    }
+
+    .select-job-custom {
+        padding: 8.5px;
+        font-family: "Gabarito", sans-serif;
+        font-size: 17px;
+        border-radius: 0.25rem;
+        width: 100%;
+    }
+
+    .input-salary-custom {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.wrap-salary {
+    margin-top: 1rem;
+}
+
+.wrap-salary-tag {
+    margin-top: 0.6rem;
+    align-items: center;
+
+    .wrap-job-title {
+        text-transform: capitalize;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 17px;
+        margin-right: 0.5rem;
+    }
+
+    .select-job-custom {
+        padding: 8.5px;
+        font-family: "Gabarito", sans-serif;
+        font-size: 17px;
+        border-radius: 0.25rem;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .input-salary-custom {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid black;
+    }
+}
+
+.wrap-footer {
+    margin-top: 1rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+    border: 2px solid transparent;
+    border-top: 2px solid rgba(229, 231, 235);
+
+    .button-custom {
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 19px;
+        padding: 5px 10px 5px 10px;
+        color: white;
+        font-family: "Gabarito";
+    }
+
+    .button-disabled {
+        background-color: rgb(213, 224, 247);
+    }
+
+    .button-enable {
+        background-color: rgba(49, 49, 227, 0.845);
+    }
+
+    .button-enable:hover {
+        background-color: blue;
+    }
+
+    .button-cancel {
+        background-color: rgb(221, 49, 84);
+    }
+
+    .button-cancel:hover {
+        background-color: red;
+    }
+
+}
+
+
+@media (min-width: 500px) {
+    .work-form {
+        .wrap-form {
+            padding: 1rem;
+    
+            .wrap-selected {
+                flex-direction: row;
+    
+                .title-label-to {
+                    width: 2.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 642px) {
+    .work-form {
+        .wrap-form {
+            .wrap-input {
+                display: flex;
+                gap: 2;
+                margin-bottom: 10px;
+    
+                .title-label {
+                    width: 6.6rem;
+                }
+    
+                .wrap-label {
+                    flex-direction: column;
+                    flex-grow: 1;
+                    display: flex;
+                }
+    
+                .title-label-to {
+                    width: 2.5rem;
+                }
+            }
+    
+            .wrap-selected {
+                flex-direction: row;
+            }
+    
+            .wrap-checkbox {
+                margin-left: 6.6rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .wrap-job {
+        display: flex;
+
+        .wrap-job-title {
+            width: 8.6rem;
+        }
+    }
+}

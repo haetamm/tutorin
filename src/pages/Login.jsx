@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/pages/login.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { urlPage } from '../utils/constans'
 import { loginFormSchema } from '../utils/validation.js'
@@ -15,7 +15,8 @@ import FormControllerInput from '../component/FormControllerInput'
 import { IoIosEyeOff } from 'react-icons/io'
 
 const Login = () => {
-    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false);
     const { control, handleSubmit, formState: { isValid, isSubmitting } } = useForm({
         resolver: zodResolver(loginFormSchema),
@@ -41,6 +42,10 @@ const Login = () => {
                         token: token,
                     },
                 });
+                if (role === "student") {
+                    console.log(urlPage.STUDENT_PROFILE)
+                    navigate('/in/student/profile')
+                }
                 toast.success('Login successful');
             } else {
                 toast.error('Invalid email or password');
