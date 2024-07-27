@@ -1,14 +1,13 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import JobDetailComp from '../component/JobDetailComp'
+import React, {  } from 'react';
+import JobDetailComp from '../component/JobDetailComp';
 
-const JobDetailMobile = () => {
-    const { id } = useParams()
+const JobDetail = () => {
+
     return (
         <>
-            <JobDetailComp id={id} />
+            <JobDetailComp />
         </>
-    )
-}
+    );
+};
 
-export default JobDetailMobile
+export default JobDetail;

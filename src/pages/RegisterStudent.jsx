@@ -10,8 +10,10 @@ import { registerFormSchema } from '../utils/validation.js'
 import { MdEmail } from 'react-icons/md'
 import { IoIosEyeOff } from 'react-icons/io'
 import { FaRegUserCircle } from 'react-icons/fa'
+import studying from "../assets/studying.png"
 
 import '../styles/pages/login.scss'
+import Logo from '../component/Logo.jsx'
 
 const RegisterStudent = () => {
     const [loading, setLoading] = useState(false);
@@ -27,8 +29,9 @@ const RegisterStudent = () => {
                 ...data,
                 role: 'student'
             }
-            const { data: student } = await axiosInstance.post('/users', dataStudent);
-            toast.success(`Proses register berhasil, silahkan login ${student.email}`);
+            const { data: student } = await axiosInstance.post('/users', dataStudent)
+            await axiosInstance.post('profiles', {userId: student.id})
+            toast.success(`Proses register berhasil, silahkan login ${student.email}`)
             reset()
         } catch (error) {
             console.error('Error fetching users:', error);
@@ -45,32 +48,60 @@ const RegisterStudent = () => {
     ];
 
     return (
-      <div className="loginPage">
-            <div className="form-container">
-                <form className="form-horizontal" onSubmit={handleSubmit(onSubmit)}>
+        <>
+        <Logo />
+            <div className="flex flex-col md:flex-row justify-center w-full min-h-screen">
+            <div
+                className="-m-10 flex gap-4 w-full justify-center mt-10 items-center bg-gradient-to-t from-slate-100 md:h-screen text-3xl p-4"
+                style={{ backgroundImage: `url(${studying})`}}
+            >
+                <div className="flex flex-col justify-center gap-10 ml-10 text-white">
+                <h1>Student</h1>
+                <h1 className="text-4xl">Form Register Student</h1>
+                <p className="text-xl text-white">
+                With the Best Teachers and Fun Learning Methods, We <br /> Help You Succeed in Your Studies!
+                </p>
+                </div>
+            </div>
+            <div className="w-full md:max-w-2xl bg-gradient-to-b md:h-screen flex justify-center">
+                <div className="loginPage">
+                <div className="form-container">
+                    <form className="form-horizontal w-96" onSubmit={handleSubmit(onSubmit)}>
                     <h3 className="title">Student Register Form</h3>
                     {fields.map((field) => (
                         <FormControllerInput
-                            key={field.name}
-                            name={field.name}
-                            control={control}
-                            defaultValue=""
-                            type={field.type}
-                            placeholder={field.placeholder}
-                            icon={field.icon}
+                        key={field.name}
+                        name={field.name}
+                        control={control}
+                        defaultValue=""
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        icon={field.icon}
                         />
                     ))}
+                    <p className="text-xs font-thin hover:text-blue-500 mt-5"><label><input type="checkbox" className="mr-2" />Click it! <br/>
+                        By registering, I agree to the Tutorin Terms of Service and Policies.</label>
+                    </p>
+                    <br />
                     <button
                         className="disabled:bg-slate-300 bg-green-500 btn signin inline-block"
                         disabled={!isValid || isSubmitting || loading}
                     >
-                        {loading ? 'Loading..' : 'Register'}
+                        {loading ? "Loading.." : "Register"}
                     </button>
-                    <span className="forgot-pass"><a href="#">Lost password?</a></span>
-                    <Link to={urlPage.REGISTER_TUTOR} className="register">Register / Signup</Link>
-                </form>
+                    <span className="forgot-pass">
+                        <a href="#">Lost password?</a>
+                    </span>
+                    <Link to={urlPage.LOGIN} className="register">
+                        Have an account?{" "}
+                        <span className="text-blue-600 hover:text-lg">Sign in</span>
+                    </Link>
+                    </form>
+                </div>
+                </div>
             </div>
-        </div>
+            </div>
+        </>
   )
 }
 

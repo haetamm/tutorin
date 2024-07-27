@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { urlPage } from '../utils/constans'
 import { useSelector } from 'react-redux'
+import axiosInstance from '../utils/api'
+import { formatDate, getHumanReadableDiff } from '../utils/helper'
 
 const Home = () => {
   const { role } = useSelector((state) => state.user)
-  
+  const [jobs, setJobs] = useState([])
   const location = useLocation();
-  const isMobile = useMediaQuery({ maxWidth: 1023 });
+  const isMobile = useMediaQuery({ maxWidth: 1023 })
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const { data: jobs } = await axiosInstance.get('/jobs');
+        setJobs(jobs)
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+    }
+
+    fetchJobs()
+  }, [])
 
   if (role !== "tutor" && role !== "superadmin" ) {
     return <Navigate to={`${urlPage.STUDENT}`} />
@@ -20,10 +35,10 @@ const Home = () => {
         <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 border-r-2 border-black">
           <div className="flex-auto overflow-auto">
             <ul className="flex-1 overflow-hidden">
-              {[...Array(30)].map((_, index) => {
+              {jobs.map((job, index) => {
                 const path = isMobile
-                  ? `${urlPage.JOB_DETAIL_MOBILE}/${index + 1}`
-                  : `${urlPage.JOB_DETAIL}/${index + 1}`;
+                  ? `${urlPage.JOB_DETAIL_MOBILE}/${job.id}`
+                  : `${urlPage.JOB_DETAIL}/${job.id}`;
                 const isActive = location.pathname === path;
 
                 return (
@@ -34,10 +49,10 @@ const Home = () => {
                       }`}
                     >
                       <div className="mr-2 font-normal">
-                        <p className="font-bold text-xl">Guru Matematika</p>
-                        <p>Bandung, Indonesia</p>
-                        <p>Posted about 1 month ago · Apply before 12 Aug</p>
-                        <p>Recruiter was hiring about 13 hours ago</p>
+                        <p className="font-bold text-2xl">{job.title}</p>
+                        <p className="text-md">{job.city}, {job.country}</p>
+                        <p className="text-sm">{job.salary}</p>
+                        <p className="text-sm">Posted about {getHumanReadableDiff(job.createdAt)}· Apply before { formatDate(job.deadline) }</p>
                       </div>
                     </div>
                   </Link>

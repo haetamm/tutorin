@@ -1,38 +1,109 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "haetami@gmail.com",
-      "name": "Tatang Haetami",
+      "id": "028d",
+      "name": "Muslihudin",
+      "email": "encih@gmail.com",
       "password": "admin",
-      "role": "superadmin"
-    },
-    {
-      "id": "550c",
-      "name": "Haetami",
-      "email": "tutor@gmail.com",
-      "password": "tutor",
-      "role": "tutor"
-    },
-    {
-      "id": "f356",
-      "name": "Aming",
-      "email": "student@gmail.com",
-      "password": "student",
       "role": "student"
+    },
+    {
+      "id": "9413",
+      "name": "Mang nana",
+      "email": "nana@gmail.com",
+      "password": "password",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "6ec4",
+      "name": "Tatang",
+      "email": "tami@gmail.com",
+      "password": "tami",
+      "role": "student"
+    }
+  ],
+  "profiles": [
+    {
+      "firstName": "João",
+      "surname": "Souza Silva",
+      "phone": "3121286800",
+      "email": "teste@exemplo.us",
+      "address": "Av. dos Andradas, 3000",
+      "city": "Belo Horizonte",
+      "country": "Brazil",
+      "postcode": "30260",
+      "resume": {},
+      "userId": "028d",
+      "id": "d2e3"
+    },
+    {
+      "firstName": "komar",
+      "surname": "sudin",
+      "phone": "09889900",
+      "email": "nana@gmail.com",
+      "address": "jakarta utara",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "postcode": "9800",
+      "resume": {},
+      "userId": "9413",
+      "id": "589a"
+    },
+    {
+      "firstName": "Gottfried",
+      "surname": "Leibniz",
+      "phone": "030303986300",
+      "email": "test@beispiel.de",
+      "address": "Erika-Mann-Straße 33",
+      "city": "München",
+      "country": "Germany",
+      "postcode": "80636",
+      "resume": {},
+      "userId": "6ec4",
+      "id": "e07a"
     }
   ],
   "jobs": [
     {
-      "id": "1",
-      "studentId": "d2d4",
-      "totorIds": [],
+      "id": "cfbe",
+      "studentId": "028d",
+      "tutorIds": [
+        "9413"
+      ],
       "title": "Guru Matematika",
-      "createdAt": "12 Januari 2024",
-      "exprired": "27 Juli 2014",
-      "updatedAt": null,
-      "addrees": "Jl. Raya Rancaekek KM 24. 5 Kav. D3 & D5, Rancaekek, Sawahdadap, Kec. Cimanggung, Kabupaten Sumedang, Jawa Barat",
-      "jobDescription": "Mengoperasikan mesin untuk menggabungkan cover dan isi melalui teknik penjilidan. Melaporkan kegiatan dan hasil produksi melalui pengisian Trax, logbook, laporan produksi, dan laporan penyimpangan guna mengevaluasi proses produksi. Mengoperasikan mesin Sheet dan mengatasi gangguan produksi untuk kelancaran hasil produksi."
+      "subject": "Matematika",
+      "gender": "laki-laki",
+      "education": "SMA",
+      "deadline": "2024-08-10",
+      "address": "Jl. Warakas IX, no. 46, Kel. warakas, Jakut",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "salary": "Rp 340.000 Per Day",
+      "description": "To ensure that the profile data fetched from the API is correctly populated into the form inputs, you'll need to update the form with the fetched data once it's available. This involves setting the default values of the form inputs using the reset method from react-hook-form after fetching the profile data.\n\nHere’s how you can adjust your ProfilePageComp component to accomplish this:\n\nUpdate Form Values: Use the reset method from react-hook-form to populate the form with fetched profile data.\n\nHandle File Inputs: Ensure that the file input is managed correctly, particularly when updating or resetting it.",
+      "createdAt": "2024-07-27T13:55:05.685Z",
+      "updatedAr": null,
+      "updatedAt": "2024-07-27T13:55:16.207Z"
+    },
+    {
+      "id": "3d92",
+      "studentId": "028d",
+      "tutorIds": [
+        "9413"
+      ],
+      "title": "Guru Sejarah",
+      "subject": "Sejarah",
+      "gender": "perempuan",
+      "education": "Sarjana",
+      "deadline": "2024-08-02",
+      "address": "1600 Amphitheatre Parkway",
+      "city": "Mountain View",
+      "country": "United States",
+      "salary": "Rp 230.000 Per Hour",
+      "description": "To ensure that the profile data fetched from the API is correctly populated into the form inputs, you'll need to update the form with the fetched data once it's available. This involves setting the default values of the form inputs using the reset method from react-hook-form after fetching the profile data.\n\nHere’s how you can adjust your ProfilePageComp component to accomplish this:\n\nUpdate Form Values: Use the reset method from react-hook-form to populate the form with fetched profile data.\n\nHandle File Inputs: Ensure that the file input is managed correctly, particularly when updating or resetting it.",
+      "createdAt": "2024-07-27T13:58:55.045Z",
+      "updatedAr": null,
+      "updatedAt": "2024-07-27T14:05:07.643Z"
     }
   ]
 }
