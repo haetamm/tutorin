@@ -16,6 +16,7 @@ import MessageDetail from "./pages/MessageDetail"
 import MessageDetailMobile from "./pages/MessageDetailMobile"
 import Tutor from "./pages/Tutor"
 import CreateJob from "./pages/CreateJob"
+import Application from "./pages/Application"
 
 const routerConfig = [
     {
@@ -51,6 +52,10 @@ const routerConfig = [
                     {
                         path: 'profile',
                         element: <Profile />
+                    },
+                    {
+                        path: 'applications',
+                        element: <Application />
                     },
                     {
                         path: 'messages',

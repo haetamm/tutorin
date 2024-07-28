@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { FaArrowLeft } from 'react-icons/fa';
 import axiosInstance from '../utils/api';
+import { toast } from 'sonner';
 
 const MessageDetailComp = () => {
   const { id } = useParams();
-  const [job, setJob] = useState(null); // Changed initial state to null
+  const [job, setJob] = useState(null);
   const [tutors, setTutors] = useState([]);
+  const [loadingStates, setLoadingStates] = useState({});
   const isMobile = useMediaQuery({ maxWidth: 1023 });
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleBack = () => {
-    history(-1);
+    navigate(-1);
   };
 
   const fetchJob = async () => {
@@ -43,7 +45,35 @@ const MessageDetailComp = () => {
     fetchJob();
   }, [id]);
 
-  if (!job) return <div></div>; 
+  const updateStatus = async (newStatus, tutorId) => {
+    setLoadingStates(prev => ({ ...prev, [tutorId]: true }));
+    try {
+      const updatedStatus = job.status.map((status) =>
+        status.tutorId === tutorId ? { ...status, status: newStatus } : status
+      );
+
+      const updateData = {
+        ...job,
+        status: updatedStatus
+      };
+
+      const response = await axiosInstance.put(`/jobs/${id}`, updateData);
+
+      if (response.status === 200) {
+        toast.success(`Process ${newStatus} successfully.`);
+        fetchJob(); // Refresh the job data
+      } else {
+        toast.error('Failed to update status.');
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+      toast.error('An error occurred. Please try again later.');
+    } finally {
+      setLoadingStates(prev => ({ ...prev, [tutorId]: false }));
+    }
+  };
+
+  if (!job) return <div></div>;
 
   return (
     <div className={`h-screen lg:block w-full`}>
@@ -81,9 +111,7 @@ const MessageDetailComp = () => {
                               />
                             </div>
                             <div className="k-w-4/5 text-start">
-                              <button className="btn-outline border-primary-color w-full capitalize">
-                                {tutor.name}
-                              </button>
+                              <p>{tutor.name}</p>
                               <p>Ulasan: {tutor.rating.length}</p>
                               <p>
                                 Rating: {tutor.rating && tutor.rating.length > 0
@@ -93,18 +121,25 @@ const MessageDetailComp = () => {
                             </div>
                           </div>
                           <div className="p-2">
-                            <Link to="#" className="w-full">
-                              <button className="btn-outline p-1 w-full capitalize bg-black text-white">
-                                View application
-                              </button>
-                            </Link>
+                            <button className="btn-outline p-1 w-full capitalize bg-black text-white">
+                              View application
+                            </button>
                           </div>
-                          <div className="p-2 pt-1">
-                            <Link to="#" className="w-full">
-                              <button className="btn-outline p-1 w-full capitalize bg-blue-500 text-white">
-                                Confirmation
-                              </button>
-                            </Link>
+                          <div className="p-2 pt-1 flex gap-3">
+                            <button
+                              onClick={() => updateStatus('rejected', tutor.id)}
+                              className="btn-outline p-1 w-full capitalize bg-red-500 text-white"
+                              disabled={loadingStates[tutor.id]}
+                            >
+                              {loadingStates[tutor.id] ? 'Loading...' : 'Reject'}
+                            </button>
+                            <button
+                              onClick={() => updateStatus('accepted', tutor.id)}
+                              className="btn-outline p-1 w-full capitalize bg-blue-500 text-white"
+                              disabled={loadingStates[tutor.id]}
+                            >
+                              {loadingStates[tutor.id] ? 'Loading...' : 'Accept'}
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -125,11 +160,11 @@ const MessageDetailComp = () => {
                   className={` bg-blue-500 text-black p-1 mb-1 mt-0 w-full sm:w-32 outline-none`}
                 >
                   <option value="">Pilih Tutor</option>
-                    {tutors.map((tutor) => (
-                      <option key={tutor.id} value={tutor.name}>
-                        {tutor.name}
-                      </option>
-                    ))}
+                  {tutors.map((tutor) => (
+                    <option key={tutor.id} value={tutor.name}>
+                      {tutor.name}
+                    </option>
+                  ))}
                 </select>
                 <button
                   type="submit"

@@ -12,6 +12,7 @@ export const urlPage = {
     "STUDENT_MESSAGE_MOBILE": '/m/messages',
     "TUTOR": "/in/tutor",
     "TUTOR_PROFILE": '/in/tutor/profile',
+    "TUTOR_APPLICATIONS": '/in/tutor/applications',
     "TUTOR_MESSAGE": '/in/tutor/messages',
     "TUTOR_MESSAGE_MOBILE": '/m/messages'
 }

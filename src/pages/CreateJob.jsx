@@ -45,6 +45,7 @@ const CreateJob = () => {
                 tutorIds: [],
                 title,
                 subject,
+                status: [],
                 gender,
                 education,
                 deadline,

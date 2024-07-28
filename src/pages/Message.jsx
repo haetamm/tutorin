@@ -109,7 +109,7 @@ const Messages = () => {
                             <div className="overflow-ellipsis overflow-hidden">
                               {job.tutorIds.length && `${getTutorNames(job.tutorIds)} applied for ${job.title}.`}
                             </div>
-                            <p className="float-right text-caption">{getHumanReadableDiff(job.createdAt)}</p>
+                            <p className="float-right text-caption">{getHumanReadableDiff(job.updatedAt || job.createdAt)}</p>
                           </div>
                         </div>
                       </Link>

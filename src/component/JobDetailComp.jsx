@@ -38,10 +38,15 @@ const JobDetailComp = () => {
         
         try {
             const updatedTutorIds = data.tutorIds.includes(userId) ? data.tutorIds : [...data.tutorIds, userId];
+            const updatedStatus = [
+                ...data.status.filter(status => status.tutorId !== userId),
+                { tutorId: userId, status: 'active' }
+            ];
 
             const updateData = { 
                 ...data,
                 tutorIds: updatedTutorIds,
+                status: updatedStatus,
                 updatedAt: new Date().toISOString()
             };
             const response = await axiosInstance.put(`/jobs/${jobId}`, updateData)

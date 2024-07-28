@@ -39,7 +39,7 @@ const Navbar = () => {
                 <div className="container mx-auto flex justify-end lg:justify-between pr-3">
                     <div className="relative lg:flex lg:flex-1 items-center text-white ml-5 hidden">
                         <Link to="/" className="relative block select-none font-custom text-4xl font-norma border-b-none">
-                            Tutorin
+                            {/* Tutorin */}
                         </Link>
                     </div>
                     <div className="flex justify-end">
