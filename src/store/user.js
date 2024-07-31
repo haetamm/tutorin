@@ -6,9 +6,9 @@ let decodedToken = {}
 
 if (token) {
     try {
-        decodedToken = jwtDecode(token);
+        decodedToken = jwtDecode(token)
     } catch (e) {
-        console.error('Invalid token', e);
+        console.error('Invalid token', e)
     }
 }
 
@@ -17,7 +17,7 @@ const DEFAULT_STATE = {
     name: decodedToken.name || "",
     role: decodedToken.role || "",
     token: token || ""
-};
+}
 
 export const userReducer = (state = DEFAULT_STATE, action) => {
     switch (action.type) {

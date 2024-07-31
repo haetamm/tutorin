@@ -9,16 +9,16 @@ import { formatDate, getHumanReadableDiff } from '../utils/helper'
 const Home = () => {
   const { role } = useSelector((state) => state.user)
   const [jobs, setJobs] = useState([])
-  const location = useLocation();
+  const location = useLocation()
   const isMobile = useMediaQuery({ maxWidth: 1023 })
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const { data: jobs } = await axiosInstance.get('/jobs');
+        const { data: jobs } = await axiosInstance.get('/jobs')
         setJobs(jobs)
       } catch (error) {
-        console.error('Error fetching jobs:', error);
+        console.error('Error fetching jobs:', error)
       }
     }
 
@@ -38,8 +38,8 @@ const Home = () => {
               {jobs.map((job, index) => {
                 const path = isMobile
                   ? `${urlPage.JOB_DETAIL_MOBILE}/${job.id}`
-                  : `${urlPage.JOB_DETAIL}/${job.id}`;
-                const isActive = location.pathname === path;
+                  : `${urlPage.JOB_DETAIL}/${job.id}`
+                const isActive = location.pathname === path
 
                 return (
                   <Link to={path} key={index} className="cursor-pointer">
@@ -56,7 +56,7 @@ const Home = () => {
                       </div>
                     </div>
                   </Link>
-                );
+                )
               })}
             </ul>
           </div>
@@ -69,7 +69,7 @@ const Home = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

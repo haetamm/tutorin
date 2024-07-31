@@ -1,79 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import { FaArrowLeft } from 'react-icons/fa';
-import axiosInstance from '../utils/api';
-import { toast } from 'sonner';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive'
+import { FaArrowLeft } from 'react-icons/fa'
+import axiosInstance from '../utils/api'
+import { toast } from 'sonner'
 
 const MessageDetailComp = () => {
-  const { id } = useParams();
-  const [job, setJob] = useState(null);
-  const [tutors, setTutors] = useState([]);
-  const [loadingStates, setLoadingStates] = useState({});
-  const isMobile = useMediaQuery({ maxWidth: 1023 });
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const [job, setJob] = useState(null)
+  const [tutors, setTutors] = useState([])
+  const [loadingStates, setLoadingStates] = useState({})
+  const isMobile = useMediaQuery({ maxWidth: 1023 })
+  const navigate = useNavigate()
 
   const handleBack = () => {
-    navigate(-1);
-  };
+    navigate(-1)
+  }
 
   const fetchJob = async () => {
     try {
-      const { data } = await axiosInstance.get(`/jobs/${id}`);
-      setJob(data);
+      const { data } = await axiosInstance.get(`/jobs/${id}`)
+      setJob(data)
       if (data.tutorIds) {
-        fetchTutors(data.tutorIds);
+        fetchTutors(data.tutorIds)
       }
     } catch (error) {
-      console.error('Error fetching job:', error);
+      console.error('Error fetching job:', error)
     }
-  };
+  }
 
   const fetchTutors = async (tutorIds) => {
     try {
       const tutorPromises = tutorIds.map((tutorId) =>
         axiosInstance.get(`/users/${tutorId}`)
-      );
-      const tutorResponses = await Promise.all(tutorPromises);
-      setTutors(tutorResponses.map((response) => response.data));
+      )
+      const tutorResponses = await Promise.all(tutorPromises)
+      setTutors(tutorResponses.map((response) => response.data))
     } catch (error) {
-      console.error('Error fetching tutors:', error);
+      console.error('Error fetching tutors:', error)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchJob();
-  }, [id]);
+    fetchJob()
+  }, [id])
 
   const updateStatus = async (newStatus, tutorId) => {
-    setLoadingStates(prev => ({ ...prev, [tutorId]: true }));
+    setLoadingStates(prev => ({ ...prev, [tutorId]: true }))
     try {
       const updatedStatus = job.status.map((status) =>
         status.tutorId === tutorId ? { ...status, status: newStatus } : status
-      );
+      )
 
       const updateData = {
         ...job,
         status: updatedStatus
-      };
+      }
 
-      const response = await axiosInstance.put(`/jobs/${id}`, updateData);
+      const response = await axiosInstance.put(`/jobs/${id}`, updateData)
 
       if (response.status === 200) {
-        toast.success(`Process ${newStatus} successfully.`);
-        fetchJob(); // Refresh the job data
+        toast.success(`Process ${newStatus} successfully.`)
+        fetchJob() 
       } else {
-        toast.error('Failed to update status.');
+        toast.error('Failed to update status.')
       }
     } catch (error) {
-      console.error('Error updating status:', error);
-      toast.error('An error occurred. Please try again later.');
+      console.error('Error updating status:', error)
+      toast.error('An error occurred. Please try again later.')
     } finally {
-      setLoadingStates(prev => ({ ...prev, [tutorId]: false }));
+      setLoadingStates(prev => ({ ...prev, [tutorId]: false }))
     }
-  };
+  }
 
-  if (!job) return <div></div>;
+  if (!job) {
+        return (
+            <>
+                <div className="lg:block h-60 font-normal">
+                    <div className="hidden lg:block h-[9rem] p-10">
+                        <div className="flex items-center gap-3">
+                            <FaArrowLeft className="h-7 w-7" />
+                            <p className="text-2xl">Select a request</p>
+                        </div>
+                        <div className="font px-[2.5rem] mt-2">Display detail here</div>
+                    </div>
+                </div>
+            </>
+        )
+    }
 
   return (
     <div className={`h-screen lg:block w-full`}>
@@ -159,7 +173,7 @@ const MessageDetailComp = () => {
                 <select
                   className={` bg-blue-500 text-black p-1 mb-1 mt-0 w-full sm:w-32 outline-none`}
                 >
-                  <option value="">Pilih Tutor</option>
+                  <option value="">Select Tutor</option>
                   {tutors.map((tutor) => (
                     <option key={tutor.id} value={tutor.name}>
                       {tutor.name}
@@ -178,7 +192,7 @@ const MessageDetailComp = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MessageDetailComp;
+export default MessageDetailComp

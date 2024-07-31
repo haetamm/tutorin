@@ -1,21 +1,21 @@
-import React from 'react';
-import { FiUser } from 'react-icons/fi';
-import { PiBagFill } from 'react-icons/pi';
-import { MdEmail } from 'react-icons/md';
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { urlPage } from '../utils/constans';
-import '../styles/component/sidebar.scss';
-import { IoFolderOpen } from 'react-icons/io5';
+import React from 'react'
+import { FiUser } from 'react-icons/fi'
+import { PiBagFill } from 'react-icons/pi'
+import { Link, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { urlPage } from '../utils/constans'
+import '../styles/component/sidebar.scss'
+import { IoFolderOpen } from 'react-icons/io5'
+import { IoMdNotifications } from 'react-icons/io'
 
 const Sidebar = () => {
-  const { role } = useSelector((state) => state.user);
-  const { pathname } = useLocation();
+  const { role } = useSelector((state) => state.user)
+  const { pathname } = useLocation()
 
   const links = [
     {
       to: role === 'student' ? urlPage.STUDENT_CREATE_JOB : urlPage.HOME,
-      label: role === 'student' ? 'Create Job' : 'Job',
+      label: role === 'student' ? 'Request Tutor' : 'Request',
       icon: <PiBagFill className="h-6 w-6" />,
     },
     {
@@ -24,9 +24,9 @@ const Sidebar = () => {
       icon: <FiUser className="h-6 w-6" />,
     },
     {
-      to: role === 'student' ? urlPage.STUDENT_MESSAGE : urlPage.TUTOR_MESSAGE,
-      label: 'Message',
-      icon: <MdEmail className="h-6 w-6" />,
+      to: role === 'student' ? urlPage.STUDENT_NOTIFICATION : urlPage.TUTOR_NOTIFICATION,
+      label: 'Notifications',
+      icon: <IoMdNotifications className="h-6 w-6" />,
     },
     ...(role === 'tutor'
       ? [
@@ -37,7 +37,7 @@ const Sidebar = () => {
           },
         ]
       : []),
-  ];
+  ]
 
   return (
     <div className="flex fixed flex-col items-center w-16 lg:w-[210px] h-full overflow-hidden nav-background text-white">
@@ -47,7 +47,7 @@ const Sidebar = () => {
       <div className="w-full px-2">
         <div className="flex flex-col items-center w-full mt-2 py-4 border-t border-gray-300">
           {links.map((link, index) => {
-            const isActive = pathname.startsWith(link.to);
+            const isActive = pathname.startsWith(link.to)
             return (
               <Link
                 key={index}
@@ -59,12 +59,12 @@ const Sidebar = () => {
                 {link.icon}
                 <span className="ml-2 text-sm font-medium hidden lg:block">{link.label}</span>
               </Link>
-            );
+            )
           })}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

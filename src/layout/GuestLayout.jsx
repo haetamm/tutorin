@@ -1,12 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 import { Toaster } from 'sonner'
-import { urlPage } from '../utils/constans.js';
+import { urlPage } from '../utils/constans.js'
 
 const GuestLayout = () => {
-    const user = useSelector((state) => state.user);
-    console.log(user)
+    const user = useSelector((state) => state.user)
   
     if (user.token) {
         return <Navigate to={`${urlPage.HOME}`} />

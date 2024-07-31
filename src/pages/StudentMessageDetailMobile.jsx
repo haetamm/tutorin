@@ -1,27 +1,27 @@
-import React, {  } from 'react'
-import JobDetailComp from '../component/JobDetailComp'
+import React from 'react'
+import MessageDetailComp from '../component/MessageDetailComp'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { urlPage } from '../utils/constans'
 import { Toaster } from 'sonner'
 
-const JobDetail = () => {
+const StudentMessageDetailMobile = () => {
     const { token, role } = useSelector((state) => state.user)
     
     if (!token) {
         return <Navigate to={`${urlPage.LOGIN}`} />;
     }
 
-    if (role !== "tutor") {
-        return <Navigate to={`${urlPage.STUDENT}`} />
+    if (role !== "student") {
+        return <Navigate to={urlPage.HOME} />
     }
 
     return (
         <>
             <Toaster className="text-lg" position='top-left'/>
-            <JobDetailComp />
+            <MessageDetailComp />
         </>
     )
 }
 
-export default JobDetail
+export default StudentMessageDetailMobile

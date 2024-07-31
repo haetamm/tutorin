@@ -13,10 +13,11 @@ import Student from "./pages/Student"
 import Profile from "./pages/Profile"
 import Message from "./pages/Message"
 import MessageDetail from "./pages/MessageDetail"
-import MessageDetailMobile from "./pages/MessageDetailMobile"
+import StudentMessageDetailMobile from "./pages/StudentMessageDetailMobile"
 import Tutor from "./pages/Tutor"
 import CreateJob from "./pages/CreateJob"
 import Application from "./pages/Application"
+import TutorMessageDetailMobile from "./pages/TutorMessageDetailMobile"
 
 const routerConfig = [
     {
@@ -58,17 +59,17 @@ const routerConfig = [
                         element: <Application />
                     },
                     {
-                        path: 'messages',
+                        path: 'notifications',
                         element: <Message />,
                         children: [
-                        {
-                            path: '', 
-                            element: <Navigate to='1' replace />, 
-                        },
-                        {
-                            path: ':id', 
-                            element: <MessageDetail />,
-                        },
+                            {
+                                path: '', 
+                                element: <Navigate to='1' replace />, 
+                            },
+                            {
+                                path: ':id', 
+                                element: <MessageDetail />,
+                            },
                         ]
                     }
                 ]
@@ -82,7 +83,7 @@ const routerConfig = [
                         element: <Profile />
                     },
                     {
-                        path: 'messages',
+                        path: 'notifications',
                         element: <Message />,
                         children: [
                             {
@@ -108,8 +109,12 @@ const routerConfig = [
         element: <JobDetailMobile />
     },
     {
-        path: '/m/messages/:id',
-        element: <MessageDetailMobile />
+        path: '/m/student/notifications/:id',
+        element: <StudentMessageDetailMobile />
+    },
+    {
+        path: '/m/tutor/notifications/:id',
+        element: <TutorMessageDetailMobile />
     },
     {
         path: '/auth',

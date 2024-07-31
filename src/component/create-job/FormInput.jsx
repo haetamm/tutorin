@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Controller } from 'react-hook-form';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Controller } from 'react-hook-form'
 
 const FormInput = ({ name, control, placeholder, errors, type }) => {
   return (
@@ -23,8 +23,8 @@ const FormInput = ({ name, control, placeholder, errors, type }) => {
         {errors[name] && <p className="error-message mt-1 text-sm">{errors[name].message}</p>}
       </div>
     </>
-  );
-};
+  )
+}
 
 FormInput.propTypes = {
   name: PropTypes.string.isRequired,
@@ -34,4 +34,4 @@ FormInput.propTypes = {
   type: PropTypes.string
 }
 
-export default FormInput;
+export default FormInput

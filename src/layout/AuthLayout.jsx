@@ -6,18 +6,19 @@ import { urlPage } from '../utils/constans'
 import Navbar from '../component/Navbar'
 
 const AuthLayout = () => {
-  const { token } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user)
   const { pathname } = useLocation()
   
-  const isStudentMessagePage = pathname.startsWith(urlPage.STUDENT_MESSAGE);
+  const isStudentMessagePage = pathname.startsWith(urlPage.STUDENT_NOTIFICATION)
+  const isTutorMessagePage = pathname.startsWith(urlPage.TUTOR_NOTIFICATION)
   
   if (!token) {
-    return <Navigate to={`${urlPage.LOGIN}`} />;
+    return <Navigate to={`${urlPage.LOGIN}`} />
   }
 
   return (
     <>
-      {!isStudentMessagePage && <Navbar />}
+      {!isStudentMessagePage && !isTutorMessagePage && <Navbar />}
       <Outlet />
       <Toaster className="text-lg" position='top-left'/>
     </>

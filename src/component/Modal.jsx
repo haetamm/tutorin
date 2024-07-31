@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Modal = ({ isOpen, title, content, onConfirm, onCancel, confirmLabel, cancelLabel }) => {
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-500 bg-opacity-75 transition-opacity" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -40,8 +40,8 @@ const Modal = ({ isOpen, title, content, onConfirm, onCancel, confirmLabel, canc
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
@@ -51,6 +51,6 @@ Modal.propTypes = {
   onCancel: PropTypes.func,
   confirmLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
-};
+}
 
-export default Modal;
+export default Modal

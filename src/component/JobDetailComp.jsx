@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { FaArrowLeft, FaShareAlt } from 'react-icons/fa';
-import { GiShare } from 'react-icons/gi';
-import { useMediaQuery } from 'react-responsive';
-import { useNavigate, useParams } from 'react-router-dom';
-import { formatDate, getHumanReadableDiff } from '../utils/helper';
-import { toast } from 'sonner';
-import axiosInstance from '../utils/api';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { FaArrowLeft, FaShareAlt } from 'react-icons/fa'
+import { GiShare } from 'react-icons/gi'
+import { useMediaQuery } from 'react-responsive'
+import { useNavigate, useParams } from 'react-router-dom'
+import { formatDate, getHumanReadableDiff } from '../utils/helper'
+import { toast } from 'sonner'
+import axiosInstance from '../utils/api'
+import { useSelector } from 'react-redux'
 
 const JobDetailComp = () => {
     const { id } = useParams()
@@ -22,10 +22,10 @@ const JobDetailComp = () => {
 
     const fetchJob = async () => {
         try {
-            const { data } = await axiosInstance.get(`/jobs/${id}`);
-            setJob(data);
+            const { data } = await axiosInstance.get(`/jobs/${id}`)
+            setJob(data)
         } catch (error) {
-            console.error('Error fetching job:', error);
+            console.error('Error fetching job:', error)
         }
     }
 
@@ -34,7 +34,7 @@ const JobDetailComp = () => {
     }, [id])
 
     const onSubmit = async (jobId, data, userId) => {
-        setLoading(true);
+        setLoading(true)
         
         try {
             const updatedTutorIds = data.tutorIds.includes(userId) ? data.tutorIds : [...data.tutorIds, userId];
@@ -48,7 +48,7 @@ const JobDetailComp = () => {
                 tutorIds: updatedTutorIds,
                 status: updatedStatus,
                 updatedAt: new Date().toISOString()
-            };
+            }
             const response = await axiosInstance.put(`/jobs/${jobId}`, updateData)
             if (response.status === 200) {
                 toast.success('Application submitted successfully.')
@@ -56,15 +56,30 @@ const JobDetailComp = () => {
             } else {
                 toast.error('Failed to submit application.')
             }
+
         } catch (error) {
-            console.error('Error submitting application:', error);
-            toast.error('An error occurred. Please try again later.');
+            console.error('Error submitting application:', error)
+            toast.error('An error occurred. Please try again later.')
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
     }
 
-    if (!job) return null;
+    if (!job) {
+        return (
+            <>
+                <div className="lg:block h-60 font-normal">
+                    <div className="hidden lg:block h-[9rem] p-10">
+                        <div className="flex items-center gap-3">
+                            <FaArrowLeft className="h-7 w-7" />
+                            <p className="text-2xl">Select a request</p>
+                        </div>
+                        <div className="font px-[2.5rem] mt-2">Display detail here</div>
+                    </div>
+                </div>
+            </>
+        )
+    }
 
     const isAlreadyApplied = job.tutorIds.includes(user.userId);
 
@@ -143,7 +158,6 @@ const JobDetailComp = () => {
                     </div>
                 </div>
             </div>
-
         </>
     );
 }

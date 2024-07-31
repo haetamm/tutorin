@@ -1,5 +1,5 @@
-import React, {  } from 'react';
-import JobDetailComp from '../component/JobDetailComp';
+import React, {  } from 'react'
+import JobDetailComp from '../component/JobDetailComp'
 
 const JobDetail = () => {
 
@@ -7,7 +7,7 @@ const JobDetail = () => {
         <>
             <JobDetailComp />
         </>
-    );
-};
+    )
+}
 
 export default JobDetail;

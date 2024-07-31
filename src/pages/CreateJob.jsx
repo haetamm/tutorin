@@ -11,7 +11,6 @@ import axiosInstance from '../utils/api.js'
 import { useSelector } from 'react-redux'
 import '../styles/pages/create-job.scss'
 
-
 const CreateJob = () => {
     const [loading, setLoading] = useState(false)
     const {userId} = useSelector((state) => state.user)
@@ -33,6 +32,11 @@ const CreateJob = () => {
             frequency: '',
         }
     })
+
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const minDate = tomorrow.toISOString().split('T')[0]
 
     const onSubmit = async (data) => {
         setLoading(true)
@@ -59,17 +63,17 @@ const CreateJob = () => {
             }
 
             await axiosInstance.post('/jobs', formData)
-            toast.success('selamat, iklan anda telah diposting')
+            toast.success('Tutor request successful')
             reset()
 
         } catch (error) {
-            console.error('Error fetching users:', error);
-            toast.error('An error occurred. Please try again later.');
+            console.error('Error fetching users:', error)
+            toast.error('An error occurred. Please try again later.')
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
         
-    };
+    }
 
     return (
         <>
@@ -77,7 +81,7 @@ const CreateJob = () => {
             <div className="ml-16 lg:ml-[210px] p-3 lg:p-6">
                 <div className="work-form w-full">
                     <div className="header">
-                        <div className="mr-2 header-title">Create job</div>
+                        <div className="mr-2 header-title">Create Request Tutor</div>
                     </div>
                     <form className="wrap-form" onSubmit={handleSubmit(onSubmit)}>
                         <div className="wrap-input">
@@ -188,15 +192,16 @@ const CreateJob = () => {
                                 <div className="title-label">
                                     <div className="title">Deadline <span className="stars">*</span></div>
                                 </div>
-                                <div className="select-wrap">
+                                <div className="">
                                     <Controller
                                         name="deadline"
                                         control={control}
                                         render={({ field }) => (
                                             <input
-                                            type="date"
-                                            className={`p-2 outline-none border-black border-2 w-[220px] ${errors.deadline ? 'border-red-500' : ''}`}
-                                            {...field}
+                                                type="date"
+                                                min={minDate}
+                                                className={`p-2 outline-none border-black border-2 w-[220px] ${errors.deadline ? 'border-red-500' : ''}`}
+                                                {...field}
                                             />
                                         )}
                                     />
@@ -268,15 +273,15 @@ const CreateJob = () => {
                         </div>
 
                         <div className="wrap-footer">
-                            <button type="submit" className="button-custom cursor-pointer button-save bg-blue-400">
-                                {loading ? 'Loading...' : 'Save'}
+                            <button type="submit" className="button-custom cursor-pointer button-save bg-blue-600">
+                                {loading ? 'Loading...' : 'Send'}
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default CreateJob;
+export default CreateJob

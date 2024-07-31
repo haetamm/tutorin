@@ -1,6 +1,7 @@
 export const genderOptions = [
-    { value: 'laki-laki', label: 'Laki-laki' },
-    { value: 'perempuan', label: 'Perempuan' }
+    { value: 'man', label: 'Man' },
+    { value: 'woman', label: 'Woman' },
+    { value: 'man / woman', label: 'Man / Woman' }
 ]
 
 export const currencyOptions = [
@@ -17,8 +18,7 @@ export const frequencyOptions = [
 ]
 
 export const fieldsProfilePage = [
-    { name: 'firstName', label: 'Name', placeholder: 'First name' },
-    { name: 'surname', label: 'Surname', placeholder: 'Surname' },
+    { name: 'name', label: 'Name', placeholder: 'Enter your name' },
     { name: 'phone', label: 'Mobile Number', placeholder: 'Enter phone number' },
     { name: 'email', label: 'Email', placeholder: 'Enter email' },
     { name: 'address', label: 'Address Line', placeholder: 'Enter address line' },

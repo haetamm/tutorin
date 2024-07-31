@@ -1,46 +1,45 @@
-import React, { useState, useEffect, useRef } from 'react';
-import '../styles/component/searchbar.scss';
+import React, { useState, useEffect, useRef } from 'react'
 
 const SearchBar = () => {
     const locations = [
         { id: 1, name: 'jakarta' },
         { id: 2, name: 'surabaya' },
         { id: 3, name: 'surakarta' },
-    ];
+    ]
 
-    const [locationInput, setLocationInput] = useState('');
-    const [filteredLocations, setFilteredLocations] = useState(locations);
-    const [isDropdownVisible, setDropdownVisible] = useState(false);
-    const dropdownRef = useRef(null);
+    const [locationInput, setLocationInput] = useState('')
+    const [filteredLocations, setFilteredLocations] = useState(locations)
+    const [isDropdownVisible, setDropdownVisible] = useState(false)
+    const dropdownRef = useRef(null)
 
     const handleLocationChange = (e) => {
-        const value = e.target.value;
-        setLocationInput(value);
+        const value = e.target.value
+        setLocationInput(value)
         setFilteredLocations(
             locations.filter(location => 
                 location.name.toLowerCase().includes(value.toLowerCase())
             )
-        );
-        setDropdownVisible(true);
-    };
+        )
+        setDropdownVisible(true)
+    }
 
     const handleLocationSelect = (locationName) => {
-        setLocationInput(locationName);
-        setDropdownVisible(false);
-    };
+        setLocationInput(locationName)
+        setDropdownVisible(false)
+    }
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setDropdownVisible(false);
+            setDropdownVisible(false)
         }
-    };
+    }
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside)
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [])
 
     return (
         <div className="flex bg-blue-200 py-4 justify-center items-center  w-full">
@@ -84,7 +83,7 @@ const SearchBar = () => {
                     </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default SearchBar;
+export default SearchBar

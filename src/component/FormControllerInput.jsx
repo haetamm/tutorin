@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { Controller } from 'react-hook-form';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Controller } from 'react-hook-form'
 
 const FormControllerInput = ({ name, control, defaultValue, type, placeholder, icon: Icon }) => (
     <div className="form-group flex justify-center items-center">
@@ -31,6 +31,6 @@ FormControllerInput.propTypes = {
     type: PropTypes.string,
     placeholder: PropTypes.string,
     icon: PropTypes.elementType,
-};
+}
 
 export default FormControllerInput;
