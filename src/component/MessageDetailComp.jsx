@@ -4,8 +4,10 @@ import { useMediaQuery } from 'react-responsive'
 import { FaArrowLeft } from 'react-icons/fa'
 import axiosInstance from '../utils/api'
 import { toast } from 'sonner'
+import { useSelector } from 'react-redux'
 
 const MessageDetailComp = () => {
+   const { userId } = useSelector((state) => state.user)
   const { id } = useParams()
   const [job, setJob] = useState(null)
   const [tutors, setTutors] = useState([])
@@ -20,9 +22,11 @@ const MessageDetailComp = () => {
   const fetchJob = async () => {
     try {
       const { data } = await axiosInstance.get(`/jobs/${id}`)
-      setJob(data)
-      if (data.tutorIds) {
-        fetchTutors(data.tutorIds)
+      if (data.studentId === userId) {
+        setJob(data)
+        if (data.tutorIds) {
+          fetchTutors(data.tutorIds)
+        }
       }
     } catch (error) {
       console.error('Error fetching job:', error)

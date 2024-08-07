@@ -37,7 +37,7 @@ const RegisterStudent = () => {
                 role: 'student'
             }
             const { data: student } = await axiosInstance.post('/users', dataStudent)
-            await axiosInstance.post('profiles', {userId: student.id, name: student.name, email: student.email})
+            await axiosInstance.post('/profiles', {userId: student.id, name: student.name, email: student.email})
             toast.success(`Registration process successful, please log in, ${student.name}`)
             reset()
             navigate(urlPage.LOGIN)
