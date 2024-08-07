@@ -5,7 +5,7 @@ const Profile = () => {
     return (
         <>
             <div className="h-[50px]"></div>
-            <div className="ml-16 lg:ml-[210px]">
+            <div className="ml-16 lg:ml-[110px]">
                 <ProfilePageComp />
             </div>
         </>

@@ -26,7 +26,7 @@ const Home = () => {
   }, [])
 
   if (role !== "tutor" && role !== "superadmin" ) {
-    return <Navigate to={`${urlPage.STUDENT}`} />
+    return <Navigate to={`${urlPage.STUDENT_PROFILE}`} />
   }
 
   return (
@@ -35,29 +35,35 @@ const Home = () => {
         <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 border-r-2 border-black">
           <div className="flex-auto overflow-auto">
             <ul className="flex-1 overflow-hidden">
-              {jobs.map((job, index) => {
-                const path = isMobile
-                  ? `${urlPage.JOB_DETAIL_MOBILE}/${job.id}`
-                  : `${urlPage.JOB_DETAIL}/${job.id}`
-                const isActive = location.pathname === path
-
-                return (
-                  <Link to={path} key={index} className="cursor-pointer">
-                    <div
-                      className={`flex items-start border-b border-solid border-black bg-white p-3 text-normal ${
-                        isActive ? 'border-l-4 border-blue-500' : ''
-                      }`}
-                    >
-                      <div className="mr-2 font-normal">
-                        <p className="font-bold text-2xl">{job.title}</p>
-                        <p className="text-md">{job.city}, {job.country}</p>
-                        <p className="text-sm">{job.salary}</p>
-                        <p className="text-sm">Posted about {getHumanReadableDiff(job.createdAt)}· Apply before { formatDate(job.deadline) }</p>
+              {jobs.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg p-4">
+                  No requests available
+                </div>
+              ) : (
+                jobs.map((job, index) => {
+                  const path = isMobile
+                    ? `${urlPage.JOB_DETAIL_MOBILE}/${job.id}`
+                    : `${urlPage.JOB_DETAIL}/${job.id}`
+                  const isActive = location.pathname === path
+  
+                  return (
+                    <Link to={path} key={index} className="cursor-pointer">
+                      <div
+                        className={`flex items-start border-b border-solid border-black bg-white p-3 text-normal ${
+                          isActive ? 'border-l-4 border-blue-500' : ''
+                        }`}
+                      >
+                        <div className="mr-2 font-normal">
+                          <p className="font-bold text-2xl">{job.title}</p>
+                          <p className="text-md">{job.city}, {job.country}</p>
+                          <p className="text-sm">{job.salary}</p>
+                          <p className="text-sm">Posted about {getHumanReadableDiff(job.createdAt)}· Apply before { formatDate(job.deadline) }</p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                )
-              })}
+                    </Link>
+                  )
+                })
+              )}
             </ul>
           </div>
           <div className="flex flex-none justify-center border border-gray-300 bg-white">

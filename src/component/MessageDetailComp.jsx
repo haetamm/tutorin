@@ -112,53 +112,64 @@ const MessageDetailComp = () => {
               <div className="h-full overflow-y-auto flex flex-col-reverse px-1">
                 <div className="text-center py-2 text-caption"></div>
                 <div className="px-4 py-5 w-full format-rich-text ml-auto">
-                  {tutors.map((tutor) => (
-                    <div key={tutor.id} className="flex w-full mb-4">
+                  {tutors.length === 0 ? (
+                    <div className="flex w-full mb-4">
                       <div className="w-full mb-5">
-                        <div className="ml-auto bg-white border-blue-200 border-2 rounded p-1">
-                          <div className="flex p-2 gap-2 items-center">
-                            <div className="w-[20%] justify-center items-center text-center">
-                              <img
-                                className="rounded-full w-36"
-                                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                                alt="Profile"
-                              />
-                            </div>
-                            <div className="k-w-4/5 text-start">
-                              <p>{tutor.name}</p>
-                              <p>Ulasan: {tutor.rating.length}</p>
-                              <p>
-                                Rating: {tutor.rating && tutor.rating.length > 0
-                                  ? (tutor.rating.reduce((sum, { rate }) => sum + rate, 0) / tutor.rating.length).toFixed(2)
-                                  : 'No ratings'}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="p-2">
-                            <button className="btn-outline p-1 w-full capitalize bg-black text-white">
-                              View application
-                            </button>
-                          </div>
-                          <div className="p-2 pt-1 flex gap-3">
-                            <button
-                              onClick={() => updateStatus('rejected', tutor.id)}
-                              className="btn-outline p-1 w-full capitalize bg-red-500 text-white"
-                              disabled={loadingStates[tutor.id]}
-                            >
-                              {loadingStates[tutor.id] ? 'Loading...' : 'Reject'}
-                            </button>
-                            <button
-                              onClick={() => updateStatus('accepted', tutor.id)}
-                              className="btn-outline p-1 w-full capitalize bg-blue-500 text-white"
-                              disabled={loadingStates[tutor.id]}
-                            >
-                              {loadingStates[tutor.id] ? 'Loading...' : 'Accept'}
-                            </button>
-                          </div>
+                        <div className="w-[20%] h-[300px] justify-center items-center text-center">
                         </div>
                       </div>
                     </div>
-                  ))}
+                  ) : (
+                    tutors.map((tutor) => {
+                      return (
+                        <div key={tutor.id} className="flex w-full mb-4">
+                          <div className="w-full mb-5">
+                            <div className="ml-auto bg-white border-blue-200 border-2 rounded p-1">
+                              <div className="flex p-2 gap-2 items-center">
+                                <div className="w-[20%] justify-center items-center text-center">
+                                  <img
+                                    className="rounded-full w-36"
+                                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                                    alt="Profile"
+                                  />
+                                </div>
+                                <div className="k-w-4/5 text-start">
+                                  <p>{tutor.name}</p>
+                                  <p>Ulasan: {tutor.rating.length}</p>
+                                  <p>
+                                    Rating: {tutor.rating && tutor.rating.length > 0
+                                      ? (tutor.rating.reduce((sum, { rate }) => sum + rate, 0) / tutor.rating.length).toFixed(2)
+                                      : 'No ratings'}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="p-2">
+                                <button className="btn-outline p-1 w-full capitalize bg-black text-white">
+                                  View application
+                                </button>
+                              </div>
+                              <div className="p-2 pt-1 flex gap-3">
+                                <button
+                                  onClick={() => updateStatus('rejected', tutor.id)}
+                                  className="btn-outline p-1 w-full capitalize bg-red-500 text-white"
+                                  disabled={loadingStates[tutor.id]}
+                                >
+                                  {loadingStates[tutor.id] ? 'Loading...' : 'Reject'}
+                                </button>
+                                <button
+                                  onClick={() => updateStatus('accepted', tutor.id)}
+                                  className="btn-outline p-1 w-full capitalize bg-blue-500 text-white"
+                                  disabled={loadingStates[tutor.id]}
+                                >
+                                  {loadingStates[tutor.id] ? 'Loading...' : 'Accept'}
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    })
+                  )}
                 </div>
               </div>
             </div>

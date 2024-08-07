@@ -1,7 +1,7 @@
 export const genderOptions = [
-    { value: 'man', label: 'Man' },
-    { value: 'woman', label: 'Woman' },
-    { value: 'man / woman', label: 'Man / Woman' }
+    { value: 'male', label: 'Male' },
+    { value: 'female', label: 'Female' },
+    { value: 'male/female', label: 'Male/Female' }
 ]
 
 export const currencyOptions = [

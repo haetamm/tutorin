@@ -15,4 +15,8 @@ export const formatDate = (isoDateString) => {
   const date = parseISO(isoDateString);
 
   return format(date, 'dd MMMM', { locale: enUS });
-};
+}
+
+export const scrollTop = () => {
+  window.scrollTo(0, 0)
+}

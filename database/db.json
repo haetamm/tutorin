@@ -1,8 +1,176 @@
 {
   "users": [
+    {
+      "id": "726e",
+      "name": "haetami tatang",
+      "email": "haetami.tatang110997@gmail.com",
+      "password": "123456",
+      "role": "student"
+    },
+    {
+      "id": "4b10",
+      "name": "haetami tatang",
+      "email": "haetami.tatang110997@gmail.com",
+      "password": "123456",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "014f",
+      "name": "Bahrul Muhit",
+      "email": "bahrul@gmail.com",
+      "password": "123456",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "2400",
+      "name": "Buhori",
+      "email": "buhori@gmail.com",
+      "password": "123456",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "0855",
+      "name": "Tami",
+      "email": "tami@gmail.com",
+      "password": "123456",
+      "passwordConfirmation": "123456",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "82c6",
+      "name": "Aceng",
+      "email": "haetami@gmail.com",
+      "password": "12345",
+      "passwordConfirmation": "12345",
+      "role": "tutor",
+      "rating": []
+    },
+    {
+      "id": "2d3f",
+      "name": "hajamudin",
+      "email": "hajamudin@gmail.com",
+      "password": "123456",
+      "passwordConfirmation": "123456",
+      "role": "student"
+    }
   ],
   "profiles": [
+    {
+      "name": "haetami tatang",
+      "phone": "082260283281",
+      "email": "haetami.tatang110997@gmail.com",
+      "address": "warakas",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "postcode": "31234",
+      "resume": {},
+      "userId": "726e",
+      "id": "c571"
+    },
+    {
+      "name": "haetami tatang",
+      "phone": "0873434893",
+      "email": "haetami.tatang110997@gmail.com",
+      "address": "jl.jalan",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "postcode": "31234",
+      "resume": {},
+      "userId": "4b10",
+      "id": "1cb1"
+    },
+    {
+      "id": "8d2e",
+      "userId": "014f",
+      "name": "Bahrul Muhit",
+      "email": "bahrul@gmail.com"
+    },
+    {
+      "id": "303d",
+      "userId": "2400",
+      "name": "Buhori",
+      "email": "buhori@gmail.com"
+    },
+    {
+      "id": "7b2a",
+      "userId": "0855",
+      "name": "Tami",
+      "email": "tami@gmail.com"
+    },
+    {
+      "id": "7715",
+      "userId": "82c6",
+      "name": "Aceng",
+      "email": "haetami@gmail.com"
+    },
+    {
+      "id": "6fd7",
+      "userId": "2d3f",
+      "name": "hajamudin",
+      "email": "hajamudin@gmail.com"
+    }
   ],
   "jobs": [
+    {
+      "id": "3428",
+      "studentId": "726e",
+      "tutorIds": [
+        "4b10",
+        "014f"
+      ],
+      "title": "Guru SIlat",
+      "subject": "silat",
+      "status": [
+        {
+          "tutorId": "4b10",
+          "status": "rejected"
+        },
+        {
+          "tutorId": "014f",
+          "status": "active"
+        }
+      ],
+      "gender": "male",
+      "education": "SLTA",
+      "deadline": "2024-08-10",
+      "address": "Jl. Warakas IX, no. 46, Kel. warakas, Jakut",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "salary": "Rp 9.000.000 Per Month",
+      "description": "Sarah Smith\nenvato.com\nNatus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.",
+      "createdAt": "2024-08-02T12:28:03.513Z",
+      "updatedAr": null,
+      "updatedAt": "2024-08-02T23:12:31.989Z"
+    },
+    {
+      "id": "54a6",
+      "studentId": "726e",
+      "tutorIds": [
+        "014f"
+      ],
+      "title": "Guru Bahasa Ingrris",
+      "subject": "bahasa inggris",
+      "status": [
+        {
+          "tutorId": "014f",
+          "status": "active"
+        }
+      ],
+      "gender": "female",
+      "education": "SLTA",
+      "deadline": "2024-09-06",
+      "address": "Jl. Warakas IX, no. 46, Kel. warakas, Jakut",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "salary": "Rp 2.000.000 Per Month",
+      "description": "kdjf dfk\nhttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqp\nhttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqphttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqphttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqphttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqphttps://www.youtube.com/watch?v=dMRCZGGAx74&list=PLFIM0718LjIVdFn6LHoD5gJ8UjvI1Baqp",
+      "createdAt": "2024-08-03T03:51:44.077Z",
+      "updatedAr": null,
+      "updatedAt": "2024-08-07T01:09:16.591Z"
+    }
   ]
 }

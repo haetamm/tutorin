@@ -78,9 +78,9 @@ const CreateJob = () => {
     return (
         <>
             <div className="h-[50px]"></div>
-            <div className="ml-16 lg:ml-[210px] p-3 lg:p-6">
+            <div className="ml-16 lg:ml-[210px] p-3 pt-[25px] lg:pt-[28px] lg:p-6">
                 <div className="work-form w-full">
-                    <div className="header">
+                    <div className="header h-[48px] flex items-center">
                         <div className="mr-2 header-title">Create Request Tutor</div>
                     </div>
                     <form className="wrap-form" onSubmit={handleSubmit(onSubmit)}>

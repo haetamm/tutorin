@@ -79,7 +79,7 @@ const Messages = () => {
             <div className="flex-1 overflow-auto border-black border-r-2">
               <div className="flex flex-col h-screen w-full">
                 <h1 className="p-4 bg-white text-xl">Notifications</h1>
-                <div className="bg-white p-4">
+                <div className="bg-white p-4 mb-2 shadow-md">
                   <input
                     type="text"
                     placeholder="Search request"
@@ -101,10 +101,10 @@ const Messages = () => {
                         <Link
                           to={path}
                           key={job.id}
-                          className={`flex items-start border-b border-solid border-black bg-white p-3 text-normal ${isActive ? 'border-l-4 border-blue-500' : ''}`}
+                          className={`flex items-start  bg-white p-3 text-normal ${isActive ? 'border-l-4 border-blue-500' : ''}`}
                           aria-selected={isActive}
                         >
-                          <div className="flex border-b w-full py-2 px-4 gap-2">
+                          <div className="flex border-b w-full py-2 px-4 gap-2 shadow-sm">
                             <div className="whitespace-nowrap flex-grow overflow-hidden text-left">
                               <div className="truncate font-bold">{job.title}</div>
                               <div className="overflow-ellipsis overflow-hidden">
