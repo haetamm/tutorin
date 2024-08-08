@@ -2,10 +2,10 @@ import React from 'react'
 import { FiUser } from 'react-icons/fi'
 import { PiBagFill } from 'react-icons/pi'
 import { Link, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { urlPage } from '../utils/constans'
 import '../styles/component/sidebar.scss'
-import { IoFolderOpen } from 'react-icons/io5'
+import { IoFolderOpen, IoLogOutSharp } from 'react-icons/io5'
 import { IoMdNotifications } from 'react-icons/io'
 import { FaStudiovinari } from 'react-icons/fa'
 import { scrollTop } from '../utils/helper'
@@ -13,6 +13,18 @@ import { scrollTop } from '../utils/helper'
 const Sidebar = () => {
   const { role } = useSelector((state) => state.user)
   const { pathname } = useLocation()
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+        dispatch({
+            type: 'OPEN_MODAL',
+            payload: {
+                title: 'Logout Confirmation',
+                content: 'Are you sure you want to logout?',
+                confirmLabel: 'Logout'
+            }
+        })
+    }
 
   const links = [
     {
@@ -39,6 +51,11 @@ const Sidebar = () => {
           },
         ]
       : []),
+    {
+      to: '#',
+      label: 'Logout',
+      icon: <IoLogOutSharp className="h-7 w-7" />,
+    }
   ]
 
   return (
@@ -55,7 +72,13 @@ const Sidebar = () => {
             const isActive = pathname.startsWith(link.to)
             return (
               <Link
-                onClick={scrollTop}
+                onClick={() => {
+                  if (link.label === 'Logout') {
+                    handleLogout()
+                  } else {
+                    scrollTop()
+                  }
+                }}
                 key={index}
                 to={link.to}
                 className={`flex items-center w-full h-[3rem] px-3 mt-2 rounded hover:bg-gray-300 ${

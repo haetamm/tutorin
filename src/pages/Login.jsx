@@ -12,6 +12,7 @@ import { MdEmail } from 'react-icons/md'
 import { useMediaQuery } from 'react-responsive'
 import Hero from '../component/guest/Hero.jsx'
 import FormRegister from '../component/guest/FormRegister.jsx'
+import { Helmet } from 'react-helmet-async'
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -64,25 +65,31 @@ const Login = () => {
     ]
 
     return (
-        <section className={` ${isMobile ? '': 'container mx-auto'} flex-grow pt-[80px] lg:pt-[95px] xl:pt-[100px]`}>
-            <div className="flex flex-col md:flex-row">
-                <Hero heroImg={heroImg} name="login" />
+        <>
+            <Helmet>
+                <title>Login . Tutorin</title>
+                <meta name="description" content="Login page" />
+            </Helmet>
+            <section className={` ${isMobile ? '': 'container mx-auto'} flex-grow pt-[80px] lg:pt-[95px] xl:pt-[100px]`}>
+                <div className="flex flex-col md:flex-row">
+                    <Hero heroImg={heroImg} name="login" />
 
-                <FormRegister
-                    name="Login"
-                    fields={fields}
-                    handleSubmit={handleSubmit}
-                    onSubmit={onSubmit}
-                    loading={loading}
-                    showPassword={showPassword}
-                    control={control}
-                    toggleShowPassword={toggleShowPassword}
-                    isValid={isValid}
-                    isSubmitting={isSubmitting}
-                >
-                </FormRegister>
-            </div>
-        </section>
+                    <FormRegister
+                        name="Login"
+                        fields={fields}
+                        handleSubmit={handleSubmit}
+                        onSubmit={onSubmit}
+                        loading={loading}
+                        showPassword={showPassword}
+                        control={control}
+                        toggleShowPassword={toggleShowPassword}
+                        isValid={isValid}
+                        isSubmitting={isSubmitting}
+                    >
+                    </FormRegister>
+                </div>
+            </section>
+        </>
     )
 }
 

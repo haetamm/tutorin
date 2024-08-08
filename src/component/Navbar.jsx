@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-import Cookies from 'js-cookie'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { urlPage } from '../utils/constans'
 import SearchBar from './SearchBar'
-import Modal from './Modal'
 import { IoIosMail } from 'react-icons/io'
 import { IoLogOut, IoSettingsSharp } from 'react-icons/io5'
 import { scrollTop } from '../utils/helper'
@@ -14,22 +12,18 @@ const Navbar = () => {
     const dispatch = useDispatch()
     const isJobDetailPage = pathname.startsWith(urlPage.JOB_DETAIL)
     const { role } = useSelector((state) => state.user)
-    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const handleLogoutClick = () => {
-        setIsModalOpen(!isModalOpen)
-    }
+    const isHide = pathname.startsWith(urlPage.HOME)
 
-    const closeModal = () => {
-        setIsModalOpen(false)
-    }
-
-    const handleConfirmLogout = () => {
-        Cookies.remove('token')
+    const handleLogout = () => {
         dispatch({
-            type: 'LOGOUT',
+            type: 'OPEN_MODAL',
+            payload: {
+                title: 'Logout Confirmation',
+                content: 'Are you sure you want to logout?',
+                confirmLabel: 'Logout'
+            }
         })
-        setIsModalOpen(false)
     }
 
     return (
@@ -50,22 +44,13 @@ const Navbar = () => {
                                 <Link onClick={scrollTop} to={role === "student" ? urlPage.STUDENT_PROFILE : urlPage.TUTOR_PROFILE}>
                                     <IoSettingsSharp className="h-7 w-7 mr-5 hover:text-blue-400"/>
                                 </Link>
-                                <IoLogOut className="h-7 w-7 cursor-pointer hover:text-blue-400" onClick={handleLogoutClick} />
+                                {isHide && <IoLogOut className="h-7 w-7 cursor-pointer hover:text-blue-400" onClick={handleLogout} />}
                             </div>
                         </div>
                     </div>
                 </div>
                 {isJobDetailPage && <SearchBar />}
             </div>
-            <Modal
-                isOpen={isModalOpen}
-                title="Logout Confirmation"
-                content="Are you sure you want to logout?"
-                onConfirm={handleConfirmLogout}
-                onCancel={closeModal}
-                confirmLabel="Logout"
-                cancelLabel="Cancel"
-            />
         </>
     )
 }

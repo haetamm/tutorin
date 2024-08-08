@@ -4,10 +4,11 @@ import { IoIosMail } from 'react-icons/io'
 import axiosInstance from '../utils/api'
 import { useSelector } from 'react-redux'
 import { toast } from 'sonner'
+import { Helmet } from 'react-helmet-async'
 
 const Application = () => {
     const [jobs, setJobs] = useState([])
-    const {userId} = useSelector((state) => state.user)
+    const {userId, name} = useSelector((state) => state.user)
 
     const fetchJobs = async () => {
         try {
@@ -26,6 +27,10 @@ const Application = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Applications | {name}</title>
+                <meta name="description" content="Applications page" />
+            </Helmet>
             <div className="h-[50px]"></div>
             <div className="ml-16 lg:ml-[210px] p-1 lg:p-3">
                 <div className="container h-full mx-auto px-0 lg:px-4 flex flex-col">

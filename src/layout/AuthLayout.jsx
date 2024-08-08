@@ -4,6 +4,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import { urlPage } from '../utils/constans'
 import Navbar from '../component/Navbar'
+import Modal from '../component/Modal'
 
 const AuthLayout = () => {
   const { token } = useSelector((state) => state.user)
@@ -20,7 +21,8 @@ const AuthLayout = () => {
     <>
       {!isStudentMessagePage && !isTutorMessagePage && <Navbar />}
       <Outlet />
-      <Toaster className="text-lg" position='top-left'/>
+      <Toaster className="text-lg" position='top-left' />
+      <Modal />
     </>
   )
 }

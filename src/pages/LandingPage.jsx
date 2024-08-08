@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom'
 import { urlPage } from '../utils/constans'
 import dashBoardImg from '../assets/dashboard-student.webp'
 import ButtonCustom from '../component/guest/ButtonCustom'
+import { Helmet } from 'react-helmet-async'
 
 const LandingPage = () => {
   return (
     <>
+      <Helmet>
+          <title>Tutorin</title>
+          <meta name="description" content="Landing page tutorin" />
+      </Helmet>
       <div className="flex-grow">
         <div className="grid grid-cols-1 lg:grid-cols-2 h-full pt-[50px] md:pt-[100px] lg:pt-[130px] w-full gap-4 container mx-auto">  
           <div className=" justify-center items-center order-2 hidden md:flex mt-0 md:mt-11 lg:mt-0">

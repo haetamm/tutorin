@@ -5,6 +5,7 @@ import { urlPage } from '../utils/constans'
 import { useSelector } from 'react-redux'
 import axiosInstance from '../utils/api'
 import { formatDate, getHumanReadableDiff } from '../utils/helper'
+import { Helmet } from 'react-helmet-async'
 
 const Home = () => {
   const { role } = useSelector((state) => state.user)
@@ -31,6 +32,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+          <title>Jobs . Tutorin</title>
+          <meta name="description" content="Jobs page" />
+      </Helmet>
       <div className="flex overflow-auto h-screen pt-[196px] md:pt-[142px] flex-1">
         <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 border-r-2 border-black">
           <div className="flex-auto overflow-auto">

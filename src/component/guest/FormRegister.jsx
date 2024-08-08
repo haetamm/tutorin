@@ -37,7 +37,7 @@ const FormRegister = ({ name, fields, handleSubmit, onSubmit, loading, showPassw
                             <span className="ml-4">Log in with Google</span>
                         </div>
                     </button>
-                    <p className="mt-4">Have an account already? <Link to={urlPage.LOGIN} className="text-white hover:text-red-400 font-semibold">Login</Link></p>
+                    {name !== "Login" && <p className="mt-4">Have an account already? <Link to={urlPage.LOGIN} className="text-white hover:text-red-400 font-semibold">Login</Link></p>}
                 </div>
             </div>
         </>

@@ -14,6 +14,7 @@ import '../styles/pages/login.scss'
 import { useMediaQuery } from 'react-responsive'
 import Hero from '../component/guest/Hero.jsx'
 import FormRegister from '../component/guest/FormRegister.jsx'
+import { Helmet } from 'react-helmet-async'
 
 const RegisterStudent = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -58,6 +59,10 @@ const RegisterStudent = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Register Student . Tutorin</title>
+                <meta name="description" content="Student Registration page" />
+            </Helmet>
             <section className={` ${isMobile ? '': 'container mx-auto'} flex-grow pt-[80px] lg:pt-[95px] xl:pt-[100px]`}>
                 <div className="flex flex-col md:flex-row items-center">
                     <Hero heroImg={heroImg} name="register" />

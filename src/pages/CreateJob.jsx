@@ -11,10 +11,11 @@ import axiosInstance from '../utils/api.js'
 import { useSelector } from 'react-redux'
 import '../styles/pages/create-job.scss'
 import WrapInput from '../component/create-job/WrapInput.jsx'
+import { Helmet } from 'react-helmet-async'
 
 const CreateJob = () => {
     const [loading, setLoading] = useState(false)
-    const {userId} = useSelector((state) => state.user)
+    const {userId, name} = useSelector((state) => state.user)
     const { control, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: zodResolver(createJobFormSchema),
         mode: 'onChange',
@@ -78,6 +79,10 @@ const CreateJob = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Create Request tutor | {name}</title>
+                <meta name="description" content="Request tutor page" />
+            </Helmet>
             <div className="h-[50px]"></div>
             <div className="ml-16 lg:ml-[210px] p-3 pt-[25px] lg:pt-[28px] lg:p-6">
                 <div className="work-form w-full">
