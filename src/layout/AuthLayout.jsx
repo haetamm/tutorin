@@ -19,9 +19,7 @@ const AuthLayout = () => {
   return (
     <>
       {!isStudentMessagePage && !isTutorMessagePage && <Navbar />}
-      <div className="background-dashboard">
-        <Outlet />
-      </div>
+      <Outlet />
       <Toaster className="text-lg" position='top-left'/>
     </>
   )

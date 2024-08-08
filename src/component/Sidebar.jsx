@@ -43,12 +43,12 @@ const Sidebar = () => {
 
   return (
     <div className="flex fixed flex-col items-center w-16 lg:w-[210px] h-full overflow-hidden nav-background text-white">
-      <a className="flex items-center w-full px-3 mt-2 h-[60px]">
+      <div className="flex items-center w-full px-3 mt-2 h-[60px]">
          <Link to='/'>
           <FaStudiovinari className="h-[60px] w-[60px] hidden lg:block"/>
         </Link>
       <div className="text-2xl mr-2 lg:mr-8 hidden lg:block">Tutorin</div>
-      </a>
+      </div>
       <div className="w-full px-2 mt-0">
         <div className="flex flex-col items-center w-full">
           {links.map((link, index) => {

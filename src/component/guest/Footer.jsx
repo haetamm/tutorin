@@ -11,10 +11,10 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { icon: FaSquareInstagram, href: '#' },
-    { icon: FaFacebookSquare, href: '#' },
-    { icon: FaLinkedin, href: '#' },
-    { icon: FaSquareXTwitter, href: '#' },
+    { icon: FaSquareInstagram, href: 'https://instagram.com' },
+    { icon: FaFacebookSquare, href: 'https://facebook.com' },
+    { icon: FaLinkedin, href: 'https://linkedin.com' },
+    { icon: FaSquareXTwitter, href: 'https://x.com' },
   ]
 
   return (
@@ -32,20 +32,18 @@ const Footer = () => {
         </svg>
         <div className="px-5 pb-12 mt-5 rounded-t-3xl md:rounded-none">
           <div className="flex flex-col">
-            <h3 className="text-3xl leading-10 text-blue-800 w-full text-center font-bold">
+            <div className="text-3xl leading-10 text-blue-800 w-full text-center font-bold">
               Sign up to our newsletter to receive updates
-            </h3>
+            </div>
             <div className="text-base text-gray-500 w-full md:w-2/4 self-center text-center lg:pt-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
           </div>
           <div className="flex flex-row justify-center space-x-1 py-4">
             <input className="bg-white rounded-lg text-sm px-2 sm:px-3 md:px-8 py-3" type="text" placeholder="email@email.com" />
-            <button className="font-bold hidden sm:block rounded-lg text-white bg-blue-700 hover:bg-blue-600 cursor-pointer px-3 py-1 md:px-6 md:py-3 focus:outline-none">
-              subscribe
-            </button>
-            <button className="font-bold block sm:hidden rounded-lg text-white bg-blue-700 hover:bg-blue-600 cursor-pointer px-3 py-1 md:px-6 md:py-3 focus:outline-none">
-              <IoNotificationsCircle className="h-7 w-7" />
+            <button className="font-bold rounded-lg text-white bg-blue-700 hover:bg-blue-600 cursor-pointer px-3 py-1 md:px-6 md:py-3 focus:outline-none">
+              <span className="hidden sm:block">subscribe</span>
+              <IoNotificationsCircle className="block sm:hidden h-7 w-7" />
             </button>
           </div>
           <div className="font-bold text-blue-700 content-center">
@@ -59,17 +57,15 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className="">
-            <ul className="flex flex-row space-x-4 justify-center items-center">
-              {socialLinks.map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} target="_blank" rel="nofollow" className="stroke-current fill-current text-blue-700 w-7 h-7 hover:opacity-50 duration-300 ease-in-out">
-                    <link.icon />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="flex flex-row space-x-4 justify-center items-center">
+            {socialLinks.map((link, index) => (
+              <li key={index}>
+                <a href={link.href} target="_blank" rel="nofollow" className="stroke-current fill-current text-blue-700 w-7 h-7 hover:opacity-50 duration-300 ease-in-out">
+                  <link.icon />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>

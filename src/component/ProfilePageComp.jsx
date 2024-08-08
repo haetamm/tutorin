@@ -82,10 +82,10 @@ const ProfilePageComp = () => {
 
   return (
     <div className="container mx-auto bg-white mt-5 mb-5 p-1 lg:p-5">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="flex flex-col items-center text-center p-5 border-b md:border-r md:border-b-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="flex flex-col items-center text-center p-1 border-b md:border-r md:border-b-0">
           <img
-            className="rounded-full mt-5 w-36"
+            className="rounded-full mt-5 w-56"
             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
             alt="Profile"
           />
@@ -108,7 +108,7 @@ const ProfilePageComp = () => {
                         <input
                           {...field}
                           type="text"
-                          className="w-full p-2 border border-gray-300 rounded mt-1"
+                          className="w-full p-2 border border-gray-300 rounded mt-1 font-normal"
                           placeholder={field.placeholder}
                         />
                         {errors[field.name] && (
@@ -133,7 +133,7 @@ const ProfilePageComp = () => {
                           const file = e.target.files[0]
                           setValue('resume', file)
                         }}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-2 border border-gray-300 rounded font-normal "
                       />
                       {errors.resume && (
                         <small className="font-normal text-red-500">{errors.resume.message}</small>
@@ -145,7 +145,7 @@ const ProfilePageComp = () => {
             </div>
             <button
               type="submit"
-              className="w-full h-[47px] mt-4 bg-blue-400 p-2 border border-gray-300 rounded"
+              className="w-full h-[47px] mt-8 bg-blue-400 p-2 border border-gray-300 rounded"
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Save'}

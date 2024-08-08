@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 import axiosInstance from '../utils/api.js'
 import { useSelector } from 'react-redux'
 import '../styles/pages/create-job.scss'
+import WrapInput from '../component/create-job/WrapInput.jsx'
 
 const CreateJob = () => {
     const [loading, setLoading] = useState(false)
@@ -84,61 +85,34 @@ const CreateJob = () => {
                         <div className="mr-2 header-title">Create Request Tutor</div>
                     </div>
                     <form className="wrap-form" onSubmit={handleSubmit(onSubmit)}>
-                        <div className="wrap-input">
-                            <div className="title-label">
-                                <div className="title">Job Title <span className="stars">*</span></div>
-                            </div>
-                            <div className="title-label wrap-label">
-                                <FormInput
-                                    name="title"
-                                    control={control}
-                                    placeholder=""
-                                    errors={errors}
-                                />
-                            </div>
-                        </div>
 
-                        <div className="wrap-input">
-                            <div className="title-label">
-                                <div className="title">Subject<span className="stars">*</span></div>
-                            </div>
-                            <div className="title-label wrap-label">
-                                <FormInput
-                                    name="subject"
-                                    control={control}
-                                    placeholder=""
-                                    errors={errors}
-                                />
-                            </div>
-                        </div>
+                        <WrapInput
+                            name="title"
+                            label="Job Title"
+                            control={control}
+                            errors={errors}
+                        />
 
-                        <div className="wrap-input">
-                            <div className="title-label">
-                                <div className="title">Education<span className="stars">*</span></div>
-                            </div>
-                            <div className="title-label wrap-label">
-                                <FormInput
-                                    name="education"
-                                    control={control}
-                                    placeholder=""
-                                    errors={errors}
-                                />
-                            </div>
-                        </div>
+                        <WrapInput
+                            name="subject"
+                            label="Subject"
+                            control={control}
+                            errors={errors}
+                        />
 
-                        <div className="wrap-input">
-                            <div className="title-label">
-                                <div className="title">Address<span className="stars">*</span></div>
-                            </div>
-                            <div className="title-label wrap-label">
-                                <FormInput
-                                    name="address"
-                                    control={control}
-                                    placeholder=""
-                                    errors={errors}
-                                />
-                            </div>
-                        </div>
+                        <WrapInput
+                            name="education"
+                            label="Education"
+                            control={control}
+                            errors={errors}
+                        />
+
+                        <WrapInput
+                            name="address"
+                            label="Address"
+                            control={control}
+                            errors={errors}
+                        />
 
                         <div className="wrap-input">
                             <div className="title-label">
@@ -251,7 +225,7 @@ const CreateJob = () => {
                                     <FormInput
                                         name="amount"
                                         control={control}
-                                        placeholder="e.g. 20.000.000"
+                                        placeholder="e.g. 20.000"
                                         errors={errors}
                                         type="number"
                                     />

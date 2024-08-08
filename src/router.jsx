@@ -29,28 +29,28 @@ const routerConfig = [
                 path: '/',
                 element: <LandingPage />
             },
-                {
-        path: '/auth',
-        element: <GuestLayout />,
-        children: [
             {
                 path: '/auth',
-                element: <Navigate to="login" />
+                element: <GuestLayout />,
+                children: [
+                    {
+                        path: '/auth',
+                        element: <Navigate to="login" />
+                    },
+                    {
+                        path: "login",
+                        element: <Login />
+                    },
+                    {
+                        path: "register/tutor",
+                        element: <RegisterTutor />
+                    },
+                    {
+                        path: "register/student",
+                        element: <RegisterStudent />
+                    }
+                ]
             },
-            {
-                path: "login",
-                element: <Login />
-            },
-            {
-                path: "register/tutor",
-                element: <RegisterTutor />
-            },
-            {
-                path: "register/student",
-                element: <RegisterStudent />
-            }
-        ]
-    },
         ]
     },
     {

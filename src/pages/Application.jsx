@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { toast } from 'sonner'
 
 const Application = () => {
-    const [job, setJobs] = useState([])
+    const [jobs, setJobs] = useState([])
     const {userId} = useSelector((state) => state.user)
 
     const fetchJobs = async () => {
@@ -14,7 +14,6 @@ const Application = () => {
             const { data } = await axiosInstance.get('/jobs')
             const filteredJobs = data.filter((job) => job.tutorIds.includes(userId))
             setJobs(filteredJobs)
-            console.log(job)
         } catch (error) {
             toast.error("Error fetching jobs")
             console.error('Error fetching jobs:', error)
@@ -33,16 +32,16 @@ const Application = () => {
                     <h1 className="text-title p-3 text-3xl">Applications</h1>
                     <div className="flex flex-grow overflow-hidden">
                         <div className="flex flex-col gap-4 p-2 w-full font-normal">
-                            {job.length === 0 ? (
+                            {jobs.length === 0 ? (
                                 <div className="text-center text-gray-500 tex-lg p-4">
                                     Application not found
                                 </div>
                             ) : (
-                                job.map((j, index) => (
+                                jobs.map((job, index) => (
                                 <div key={index} className="bg-white border border-tertiary-ghost-color rounded-md">
                                     <div className="bg-gray-200 flex">
                                         <div className="px-4 py-2 flex gap-1 flex-grow text-lg">
-                                            <div className="text-left font-medium hover:underline hover:text-primary-color">{j.title}</div>
+                                            <div className="text-left font-medium hover:underline hover:text-primary-color">{job.title}</div>
                                         </div>
                                         <div className="flex">
                                             <div className="p-2 flex border-r-2 border-gray-300">
@@ -64,16 +63,16 @@ const Application = () => {
                                         <div className="flex flex-col sm:flex-row gap-4">
                                             <div>
                                                 <a className="text-primary-color text-lg hover:text-black hover:underline">
-                                                    {j.subject}
+                                                    {job.subject}
                                                 </a>
                                                 <div className="text-sm">
-                                                    {j.status.find((s) => s.tutorId === userId)?.status || 'No status available'}
+                                                    {job.status.find((s) => s.tutorId === userId)?.status || 'No status available'}
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-2 sm:flex-col-reverse">
                                             <div className="text-gray-600">
-                                                Deadline: {j.deadline}
+                                                Deadline: {job.deadline}
                                             </div>
                                         </div>
                                     </div>

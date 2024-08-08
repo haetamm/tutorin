@@ -14,7 +14,6 @@ const DefaultLayout = () => {
           <SideBar />
           <Outlet />
           <Footer />
-
         </div>
       </>
   )

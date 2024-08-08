@@ -16,7 +16,7 @@ const FormControllerInput = ({ name, control, defaultValue = '', type = 'text', 
                         {...field}
                         type={isPasswordInput ? (showPassword ? 'text' : 'password') : type}
                         placeholder={placeholder}
-                        className={`w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none pl-12 
+                        className={`w-full px-4 py-3 rounded-md bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none pl-12 
                         } ${error ? 'border-red-500' : ''}`}
                     />
                     {isPasswordInput && <PasswordToggleIcon showPassword={showPassword} toggleShowPassword={toggleShowPassword} />}
