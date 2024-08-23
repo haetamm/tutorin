@@ -13,9 +13,9 @@ const NavbarGuest = () => {
   const isOpen = useSelector((state) => state.sidebarGuest.isOpen)
 
   const toggleSidebarGuest = () => {
-      dispatch({
-          type: isOpen ? 'CLOSE_SIDEBAR_GUEST' : 'OPEN_SIDEBAR_GUEST',
-      })
+    dispatch({
+      type: isOpen ? 'CLOSE_SIDEBAR_GUEST' : 'OPEN_SIDEBAR_GUEST',
+    })
   }
 
   const closeNavbar = () => {

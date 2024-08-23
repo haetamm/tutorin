@@ -1,8 +1,75 @@
 {
   "users": [
+    {
+      "id": "28e7",
+      "name": "Muslihudin",
+      "email": "encih@gmail.com",
+      "password": "1234",
+      "passwordConfirmation": "1234",
+      "role": "student"
+    },
+    {
+      "id": "d675",
+      "name": "Nana sukana",
+      "email": "nana@gmail.com",
+      "password": "12345",
+      "passwordConfirmation": "12345",
+      "role": "tutor",
+      "rating": []
+    }
   ],
   "profiles": [
+    {
+      "name": "Muslihudin",
+      "phone": "082260283281",
+      "email": "encih@gmail.com",
+      "address": "warakas",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "postcode": "31234",
+      "resume": {},
+      "userId": "28e7",
+      "id": "3448"
+    },
+    {
+      "name": "Nana sukana",
+      "phone": "09878782",
+      "email": "nana@gmail.com",
+      "address": "jakarta utara",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "postcode": "9800",
+      "resume": {},
+      "userId": "d675",
+      "id": "ec26"
+    }
   ],
   "jobs": [
+    {
+      "id": "6435",
+      "studentId": "28e7",
+      "tutorIds": [
+        "d675"
+      ],
+      "title": "Guru Matematika",
+      "subject": "matematika",
+      "status": [
+        {
+          "tutorId": "d675",
+          "status": "accepted"
+        }
+      ],
+      "gender": "female",
+      "education": "SLTA",
+      "deadline": "2024-08-15",
+      "address": "Jl. Warakas IX, no. 46, Kel. warakas",
+      "city": "jakarta",
+      "country": "Indonesia",
+      "salary": "Rp 3.000.000 Per Month",
+      "description": "Bertanggung jawab kepada kepala sekolah dalam Melaksanakan KBM, meliputi :\n\nMembuat kelengkapan mengajar dengan baik dan lengkap,\nMelaksanakan kegiatan pembelajan,\nMelaksanakan kegiatan penilaian proses belajar, ulangan harian, ulangan umum dan ujian akhir\nmelakukan analisis ulangan harian,\nMenyusun dan melaksanakan program perbaikan dan pengayaan\nMengisi daftar nilai anak didik,\nmelaksanakan kegiatan pembimbingan ( pembimbingan pengetahuan kepada guru lain dalam proses pembelajaran,\nmembuat alat pembelajaran/ alat peragan serta menumbuhkembangkan sikap menghargai karya seni,\nmengikuti kegiatan pengembangan dan pemayarakatan kurikulum.",
+      "createdAt": "2024-08-12T05:47:51.403Z",
+      "updatedAr": null,
+      "updatedAt": "2024-08-12T05:49:21.166Z"
+    }
   ]
 }

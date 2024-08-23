@@ -3,7 +3,7 @@ import { FiUser } from 'react-icons/fi'
 import { PiBagFill } from 'react-icons/pi'
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { urlPage } from '../utils/constans'
+import { roles, urlPage } from '../utils/constans'
 import '../styles/component/sidebar.scss'
 import { IoFolderOpen, IoLogOutSharp } from 'react-icons/io5'
 import { IoMdNotifications } from 'react-icons/io'
@@ -28,21 +28,21 @@ const Sidebar = () => {
 
   const links = [
     {
-      to: role === 'student' ? urlPage.STUDENT_CREATE_JOB : urlPage.HOME,
-      label: role === 'student' ? 'Request Tutor' : 'Request',
+      to: role === roles.STUDENT ? urlPage.STUDENT_CREATE_JOB : urlPage.HOME,
+      label: role === roles.STUDENT ? 'Request Tutor' : 'Request',
       icon: <PiBagFill className="h-6 w-6" />,
     },
     {
-      to: role === 'student' ? urlPage.STUDENT_PROFILE : urlPage.TUTOR_PROFILE,
+      to: role === roles.STUDENT ? urlPage.STUDENT_PROFILE : urlPage.TUTOR_PROFILE,
       label: 'Profile',
       icon: <FiUser className="h-6 w-6" />,
     },
     {
-      to: role === 'student' ? urlPage.STUDENT_NOTIFICATION : urlPage.TUTOR_NOTIFICATION,
+      to: role === roles.STUDENT ? urlPage.STUDENT_NOTIFICATION : urlPage.TUTOR_NOTIFICATION,
       label: 'Notifications',
       icon: <IoMdNotifications className="h-6 w-6" />,
     },
-    ...(role === 'tutor'
+    ...(role === roles.TUTOR
       ? [
           {
             to: urlPage.TUTOR_APPLICATIONS,

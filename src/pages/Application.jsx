@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { BsThreeDotsVertical } from 'react-icons/bs'
-import { IoIosMail } from 'react-icons/io'
 import axiosInstance from '../utils/api'
 import { useSelector } from 'react-redux'
-import { toast } from 'sonner'
+import Loader from '../component/Loader'
 import { Helmet } from 'react-helmet-async'
+import { handleFormErrors } from '../utils/error-handling'
+import CardApplication from '../component/application/CardApplication'
 
 const Application = () => {
+    const [loading, setLoading] = useState(false)
     const [jobs, setJobs] = useState([])
-    const {userId, name} = useSelector((state) => state.user)
+    const {name} = useSelector((state) => state.user)
+    
 
     const fetchJobs = async () => {
+        setLoading(true)
         try {
-            const { data } = await axiosInstance.get('/jobs')
-            const filteredJobs = data.filter((job) => job.tutorIds.includes(userId))
-            setJobs(filteredJobs)
+            const { data: response } = await axiosInstance.get('/applications')
+            const { data: jobs} = response
+            setJobs(jobs)
         } catch (error) {
-            toast.error("Error fetching jobs")
+            handleFormErrors(error, null)
             console.error('Error fetching jobs:', error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -38,58 +43,16 @@ const Application = () => {
                     <div className="flex flex-grow overflow-hidden">
                         <div className="flex flex-col gap-4 p-2 w-full font-normal">
                             {jobs.length === 0 ? (
-                                <div className="text-center text-gray-500 tex-lg p-4">
-                                    Application not found
-                                </div>
+                                loading ? (
+                                    <Loader />
+                                ) : (
+                                    <div className="text-center text-xl p-4 font-bold">
+                                        Application not found
+                                    </div>
+                                )
                             ) : (
                                 jobs.map((job, index) => (
-                                <div key={index} className="bg-white border border-tertiary-ghost-color rounded-md">
-                                    <div className="bg-gray-200 flex">
-                                        <div className="px-4 py-2 flex gap-1 flex-grow text-lg">
-                                            <div className="text-left font-medium hover:underline hover:text-primary-color">{job.title}</div>
-                                        </div>
-                                        <div className="flex">
-                                            <div className="p-2 flex border-r-2 border-gray-300">
-                                            <div className="flex">
-                                                <button className="text-primary-color my-auto h-6 flex gap-1 rounded px-2">
-                                                    <IoIosMail className="h-[24px] w-[24px]" />
-                                                    <span className="hidden sm:block my-auto font-medium uppercase">Message</span>
-                                                </button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="px-2 my-auto h-6">
-                                            <button className="mat-menu-trigger h-6 rounded">
-                                                <BsThreeDotsVertical className="w-6 h-6" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="p-6 flex flex-col sm:flex-row gap-4 justify-between text-center sm:text-left">
-                                        <div className="flex flex-col sm:flex-row gap-4">
-                                            <div>
-                                                <a className="text-primary-color text-lg hover:text-black hover:underline">
-                                                    {job.subject}
-                                                </a>
-                                                <div className="text-sm">
-                                                    {job.status.find((s) => s.tutorId === userId)?.status || 'No status available'}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col gap-2 sm:flex-col-reverse">
-                                            <div className="text-gray-600">
-                                                Deadline: {job.deadline}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div className="flex gap-1 border-none text-gray-500 rounded-b-lg">
-                                        <select name="" id="" className="w-full p-3 outline-none rounded-b-lg  cursor-pointer border-none">
-                                            <option value="" className="p-3">Status</option>
-                                            <option value="" className="p-3">I got hired</option>
-                                            <option value="" className="p-3">I withdrew my application</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                    <CardApplication key={index} job={job} />
                                 ))
                             )}
                         </div>

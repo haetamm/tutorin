@@ -16,3 +16,9 @@ export const urlPage = {
     "TUTOR_NOTIFICATION": '/in/tutor/notifications',
     "TUTOR_NOTIFICATION_MOBILE": '/m/tutor/notifications'
 }
+
+export const roles = {
+    "ADMIN": "ROLE_ADMIN",
+    "STUDENT": "ROLE_STUDENT",
+    "TUTOR": "ROLE_TUTOR"
+}

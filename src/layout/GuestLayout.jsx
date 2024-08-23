@@ -8,7 +8,7 @@ const GuestLayout = () => {
     const user = useSelector((state) => state.user)
   
     if (user.token) {
-        return <Navigate to={`${urlPage.HOME}`} />
+        return <Navigate to={`${urlPage.STUDENT}`} />
     }
 
     return (

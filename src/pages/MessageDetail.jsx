@@ -1,5 +1,5 @@
 import React, {  } from 'react'
-import MessageDetailComp from '../component/MessageDetailComp'
+import MessageDetailComp from '../component/message/MessageDetailComp'
 
 const MessageDetail = () => {
     return (

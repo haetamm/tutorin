@@ -1,8 +1,8 @@
 import React, {  } from 'react'
-import JobDetailComp from '../component/JobDetailComp'
+import JobDetailComp from '../component/job-detail/JobDetailComp'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { urlPage } from '../utils/constans'
+import { roles, urlPage } from '../utils/constans'
 import { Toaster } from 'sonner'
 
 const JobDetail = () => {
@@ -12,7 +12,7 @@ const JobDetail = () => {
         return <Navigate to={`${urlPage.LOGIN}`} />;
     }
 
-    if (role !== "tutor") {
+    if (role !== roles.TUTOR) {
         return <Navigate to={`${urlPage.STUDENT}`} />
     }
 

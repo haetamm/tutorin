@@ -1,3 +1,5 @@
+## Backend -> [here](https://github.com/haetamm/tutorin-api-spring-boot)
+
 ### Setup
 
 Make sure to install the dependencies:
@@ -50,11 +52,4 @@ yarn build
 
 # bun
 bun run build
-```
-
-### Mockup API
-
-```bash
-# run json-server
-npx json-server database/db.json
 ```

@@ -3,23 +3,26 @@ import heroImg from '../assets/login-img.webp'
 import Cookies from 'js-cookie'
 import { loginFormSchema } from '../utils/validation.js'
 import axiosInstance from '../utils/api'
-import { generateToken } from '../utils/security'
 import { toast } from 'sonner'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { MdEmail } from 'react-icons/md'
 import { useMediaQuery } from 'react-responsive'
 import Hero from '../component/guest/Hero.jsx'
 import FormRegister from '../component/guest/FormRegister.jsx'
 import { Helmet } from 'react-helmet-async'
+import { handleFormErrors } from '../utils/error-handling.js'
+import { loginFields } from '../utils/fields-input.js'
+import { useNavigate } from 'react-router-dom'
+import { urlPage } from '../utils/constans.js'
 
 const Login = () => {
+    const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)
     const isMobile = useMediaQuery({ maxWidth: 1400 })
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
-    const { control, handleSubmit, formState: { isValid, isSubmitting } } = useForm({
+    const { control, handleSubmit, setError, formState: { isValid, isSubmitting } } = useForm({
         resolver: zodResolver(loginFormSchema),
         mode: 'onChange', 
     })
@@ -31,38 +34,33 @@ const Login = () => {
     const onSubmit = async (data) => {
         setLoading(true)
         try {
-            const { data: users } = await axiosInstance.get('/users')
-            const user = users.find(u => u.email === data.email && u.password === data.password)
+            const { data: response } = await axiosInstance.post('/auth/login', data)
+            const { data: user } = response
+            const { name, roles, token } = user
+            navigate(urlPage.STUDENT)
             
-            if (user) {
-                const { id, role, name } = user
-                const token = generateToken(id, name, role)
-                Cookies.set('token', token)
-                dispatch({
-                    type: 'LOGIN',
-                    payload: {
-                        userId: id,
-                        name: name,
-                        role: role,
-                        token: token,
-                    },
-                })
-                toast.success('Login successful')
-            } else {
-                toast.error('Invalid email or password')
-            }
+            Cookies.set('token', token)
+            dispatch({
+                type: 'LOGIN',
+                payload: {
+                    name: name,
+                    role: roles[0],
+                    token: token,
+                },
+            })
+            toast.success('Login successful')
+         
         } catch (error) {
-            console.error('Error fetching users:', error)
-            toast.error('An error occurred. Please try again later.')
+            if (error.response && error.response.status === 401) {
+                toast.error("username or password incorrect")
+            } else {
+                handleFormErrors(error, setError)
+            }
         } finally {
             setLoading(false)
         }
     }
 
-    const fields = [
-        { name: 'email', type: 'email', placeholder: 'Email', icon: MdEmail },
-        { name: 'password', type: 'password', placeholder: 'Password', icon: null, isPasswordInput: true },
-    ]
 
     return (
         <>
@@ -76,7 +74,7 @@ const Login = () => {
 
                     <FormRegister
                         name="Login"
-                        fields={fields}
+                        fields={loginFields}
                         handleSubmit={handleSubmit}
                         onSubmit={onSubmit}
                         loading={loading}

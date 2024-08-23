@@ -1,7 +1,7 @@
 export const genderOptions = [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' },
-    { value: 'male/female', label: 'Male/Female' }
+    { value: 'MALE', label: 'Male' },
+    { value: 'FEMALE', label: 'Female' },
+    { value: 'MALE_OR_FEMALE', label: 'Male/Female' }
 ]
 
 export const currencyOptions = [
@@ -13,12 +13,14 @@ export const currencyOptions = [
 export const frequencyOptions = [
     { value: 'Per Hour', label: 'Per Hour' },
     { value: 'Per Day', label: 'Per Day' },
+    { value: 'Per Week', label: 'Per Week' },
     { value: 'Per Month', label: 'Per Month' },
     { value: 'Per Year', label: 'Per Year' }
 ]
 
 export const fieldsProfilePage = [
     { name: 'name', label: 'Name', placeholder: 'Enter your name' },
+    { name: 'username', label: 'Username', placholder: 'Enter your username' },
     { name: 'phone', label: 'Mobile Number', placeholder: 'Enter phone number' },
     { name: 'email', label: 'Email', placeholder: 'Enter email' },
     { name: 'address', label: 'Address Line', placeholder: 'Enter address line' },

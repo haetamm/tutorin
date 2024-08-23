@@ -62,6 +62,38 @@ const routerConfig = [
                 element: <Navigate to='student' replace />,
             },
             {
+                path: 'student',
+                element: <Student />,
+                children: [
+                    {
+                        path: '',
+                        element: <Navigate to='profile' replace />,
+                    },
+                    {
+                        path: 'profile',
+                        element: <Profile />
+                    },
+                    {
+                        path: 'notifications',
+                        element: <Message />,
+                        children: [
+                            {
+                                path: '', 
+                                element: <Navigate to='1' replace />, 
+                            },
+                            {
+                                path: ':id', 
+                                element: <MessageDetail />,
+                            },
+                        ]
+                    },
+                    {
+                        path: 'create/job',
+                        element: <CreateJob />
+                    }
+                ]
+            },
+            {
                 path: 'home',
                 element: <Home />,
                 children: [
@@ -100,38 +132,6 @@ const routerConfig = [
                                 element: <MessageDetail />,
                             },
                         ]
-                    }
-                ]
-            },
-            {
-                path: 'student',
-                element: <Student />,
-                children: [
-                    {
-                        path: '',
-                        element: <Navigate to='create/job' replace />,
-                    },
-                    {
-                        path: 'profile',
-                        element: <Profile />
-                    },
-                    {
-                        path: 'notifications',
-                        element: <Message />,
-                        children: [
-                            {
-                                path: '', 
-                                element: <Navigate to='1' replace />, 
-                            },
-                            {
-                                path: ':id', 
-                                element: <MessageDetail />,
-                            },
-                        ]
-                    },
-                    {
-                        path: 'create/job',
-                        element: <CreateJob />
                     }
                 ]
             }

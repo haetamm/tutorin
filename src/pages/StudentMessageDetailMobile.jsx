@@ -1,9 +1,9 @@
 import React from 'react'
-import MessageDetailComp from '../component/MessageDetailComp'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import { urlPage } from '../utils/constans'
+import { roles, urlPage } from '../utils/constans'
 import { Toaster } from 'sonner'
+import MessageDetailComp from '../component/message/MessageDetailComp'
 
 const StudentMessageDetailMobile = () => {
     const { token, role } = useSelector((state) => state.user)
@@ -12,7 +12,7 @@ const StudentMessageDetailMobile = () => {
         return <Navigate to={`${urlPage.LOGIN}`} />;
     }
 
-    if (role !== "student") {
+    if (role !== roles.STUDENT) {
         return <Navigate to={urlPage.HOME} />
     }
 

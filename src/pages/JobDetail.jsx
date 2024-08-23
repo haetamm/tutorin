@@ -1,5 +1,5 @@
 import React, {  } from 'react'
-import JobDetailComp from '../component/JobDetailComp'
+import JobDetailComp from '../component/job-detail/JobDetailComp'
 import { Helmet } from 'react-helmet-async'
 
 const JobDetail = () => {
