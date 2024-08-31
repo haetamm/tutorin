@@ -22,22 +22,22 @@ const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
                             </div>
                         </div>
                         <div className="p-2">
-                            <button className="btn-outline p-1 w-full capitalize bg-black text-white">
+                            <button className=" p-1 w-full capitalize bg-black text-white">
                                 View application
                             </button>
                         </div>
                         <div className="p-2 pt-1 flex gap-3">
                             <button
-                                onClick={() => updateStatus('REJECTED', tutor.id)}
-                                className="btn-outline p-1 w-full capitalize bg-red-500 text-white"
-                                disabled={loading[tutor.id]}
+                                onClick={tutor.status === "REJECTED" ? null : () => updateStatus('REJECTED', tutor.id)}
+                                className=" p-1 w-full capitalize bg-red-500 text-white disabled:cursor-not-allowed disabled:bg-red-300"
+                                disabled={tutor.status === "REJECTED" || loading[tutor.id]}
                             >
                                 {loading[tutor.id] ? 'Loading...' : 'Reject'}
                             </button>
                             <button
-                                onClick={() => updateStatus('ACCEPTED', tutor.id)}
-                                className="btn-outline p-1 w-full capitalize bg-blue-500 text-white"
-                                disabled={loading[tutor.id]}
+                                onClick={tutor.status === "ACCEPTED" ? null : () => updateStatus('ACCEPTED', tutor.id)}
+                                className=" p-1 w-full capitalize bg-blue-500 text-white disabled:cursor-not-allowed disabled:bg-blue-300"
+                                disabled={tutor.status === "ACCEPTED" || loading[tutor.id]}
                             >
                                 {loading[tutor.id] ? 'Loading...' : 'Accept'}
                             </button>

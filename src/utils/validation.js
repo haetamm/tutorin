@@ -5,11 +5,23 @@ export const loginFormSchema = z.object({
   password: z.string().trim().min(1, 'Password is required'),
 })
 
+export const forgotPasswordFormSchema = z.object({
+  email: z.string().trim().min(1, 'Email is required').email('Invalid email format'),
+})
+
+export const resetPasswordFormSchema = z.object({
+  password: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Password must contain only alphanumeric characters"),
+  passwordConfirmation: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters'),
+}).refine((data) => data.password === data.passwordConfirmation, {
+  message: "Passwords don't match",
+  path: ['passwordConfirmation'],
+})
+
 export const registerFormSchema = z.object({
   name: z.string().trim().min(4, 'Minimum 4 characters').max(23, 'Maximu, 23 characters').regex(/^[a-zA-Z ]+$/, "Name must contain only alphabet characters and spaces"),
   username: z.string().trim().min(3,'Minimum 3 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Username must contain only alphanumeric characters"),
   email: z.string().trim().min(1, 'Email is required').email('Invalid email format'),
-  password: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Username must contain only alphanumeric characters"),
+  password: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Password must contain only alphanumeric characters"),
   passwordConfirmation: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters'),
 }).refine((data) => data.password === data.passwordConfirmation, {
   message: "Passwords don't match",

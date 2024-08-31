@@ -19,6 +19,8 @@ import Application from "./pages/Application"
 import TutorMessageDetailMobile from "./pages/TutorMessageDetailMobile"
 import DefaultLayout from "./layout/DefaultLayout"
 import LandingPage from './pages/LandingPage'
+import ForgotPassword from "./pages/ForgotPassword"
+import ResetPassword from "./pages/ResetPassword"
 
 const routerConfig = [
     {
@@ -51,6 +53,14 @@ const routerConfig = [
                     }
                 ]
             },
+            {
+                path: '/forgot-password',
+                element: <ForgotPassword />
+            },
+            {
+                path: '/reset-password',
+                element: <ResetPassword />
+            }
         ]
     },
     {

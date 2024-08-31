@@ -13,3 +13,12 @@ export const loginFields = [
     { name: 'username', type: 'username', placeholder: 'Username', icon: FaUserCircle },
     { name: 'password', type: 'password', placeholder: 'Password', icon: null, isPasswordInput: true },
 ]
+
+export const forgotPasswordFields = [
+    { name: 'email', type: 'email', placeholder: 'Email', icon: MdEmail },
+]
+
+export const resetPasswordFields = [
+    { name: 'password', type: 'password', placeholder: 'Password', icon: null, isPasswordInput: true },
+    { name: 'passwordConfirmation', type: 'password', placeholder: 'Password Confirmation', icon: null, isPasswordInput: true },
+]

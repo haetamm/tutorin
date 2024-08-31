@@ -1,5 +1,6 @@
 export const urlPage = {
     "LOGIN": "/auth/login",
+    "FORGOT_PASSWORD": "/forgot-password",
     "REGISTER_TUTOR": "/auth/register/tutor",
     "REGISTER_STUDENT": "/auth/register/student",
     "HOME": "/in/home",

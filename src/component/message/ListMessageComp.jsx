@@ -47,7 +47,7 @@ const ListMessageComp = ({jobs, loading, isMobile}) => {
                                         {job.tutors.length ? `${job.tutors.map(u => u.name)} applied for ${job.title}` : 'No one has applied yet'}
                                     </div>
                                     <p className="float-right text-sm">
-                                        {job.tutors.length ? getHumanReadableDiff(job.tutors[job.tutors.length - 1].updatedAt) : ''}
+                                        {job.tutors.length ? getHumanReadableDiff(job.tutors[job.tutors.length - 1].createdAt) : ''}
                                     </p>
                                 </div>
                                 <p className="float-right text-sm">

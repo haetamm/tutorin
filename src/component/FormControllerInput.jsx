@@ -10,7 +10,7 @@ const FormControllerInput = ({ name, control, defaultValue = '', type = 'text', 
             control={control}
             defaultValue={defaultValue}
             render={({ field, fieldState: { error } }) => (
-                <div className="relative font-normal">
+                <div className="relative font-normal m-0">
                     {Icon && <Icon className="absolute left-3 top-5 h-6 w-6 text-gray-400 cursor-pointer"/>}
                     <input
                         {...field}
@@ -20,7 +20,7 @@ const FormControllerInput = ({ name, control, defaultValue = '', type = 'text', 
                         } ${error ? 'border-red-500' : ''}`}
                     />
                     {isPasswordInput && <PasswordToggleIcon showPassword={showPassword} toggleShowPassword={toggleShowPassword} />}
-                    {error && <small className="text-white text-sm mt-1">{error.message}</small>}
+                    {error ? <small className="text-white text-sm mt-0 ml-3">{error && error.message}</small> : <small className="text-transparent select-none text-sm">not</small>}
                 </div>
             )}
         />
