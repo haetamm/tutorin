@@ -1,6 +1,5 @@
 const DEFAULT_STATE = {
     isOpen: false,
-    title: "",
     content: "",
     confirmLabel: "",
 }
@@ -11,7 +10,7 @@ export const modalReducer = (state = DEFAULT_STATE, action) => {
             return { ...state, isOpen: false }
         case "OPEN_MODAL":
             return {
-                ...state, isOpen: true, title: action.payload.title, content: action.payload.content, confirmLabel: action.payload.confirmLabel,
+                ...state, isOpen: true, content: action.payload.content, confirmLabel: action.payload.confirmLabel,
             }
         default:
             return state

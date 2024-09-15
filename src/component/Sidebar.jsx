@@ -19,8 +19,7 @@ const Sidebar = () => {
         dispatch({
             type: 'OPEN_MODAL',
             payload: {
-                title: 'Logout Confirmation',
-                content: 'Are you sure you want to logout?',
+                content: 'Logout',
                 confirmLabel: 'Logout'
             }
         })

@@ -35,7 +35,9 @@ const JobDetailComp = () => {
     }
 
     useEffect(() => {
-        fetchJob()
+        if (id !== "1") {
+            fetchJob()
+        }
     }, [id])
 
     const onSubmit = async (jobId) => {

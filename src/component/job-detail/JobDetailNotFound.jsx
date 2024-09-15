@@ -21,7 +21,7 @@ const JobDetailNotFound = ({ isMobile, handleBack }) => {
 }
 
 JobDetailNotFound.propTypes = {
-    isMobile: PropTypes.number.isRequired,
+    isMobile: PropTypes.bool.isRequired,
     handleBack: PropTypes.func.isRequired
 }
 

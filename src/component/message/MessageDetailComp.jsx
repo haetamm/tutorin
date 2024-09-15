@@ -36,7 +36,9 @@ const MessageDetailComp = () => {
   }
 
   useEffect(() => {
-    fetchJob()
+    if (id !== "1") {
+      fetchJob()
+    }
   }, [id])
 
   const updateStatus = async (newStatus, tutorId) => {

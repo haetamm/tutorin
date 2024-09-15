@@ -4,6 +4,11 @@ export const genderOptions = [
     { value: 'MALE_OR_FEMALE', label: 'Male/Female' }
 ]
 
+export const roleOptions = [
+    { value: 'ROLE_STUDENT', label: 'STUDENT' },
+    { value: 'ROLE_TUTOR', label: 'TUTOR' },
+]
+
 export const currencyOptions = [
     { value: 'Rp', label: 'IDR - Rp' },
     { value: '₱', label: 'PHP - ₱' },

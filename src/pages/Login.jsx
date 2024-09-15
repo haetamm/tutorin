@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import heroImg from '../assets/login-img.webp'
 import Cookies from 'js-cookie'
 import { loginFormSchema } from '../utils/validation.js'
@@ -60,6 +60,60 @@ const Login = () => {
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const code = searchParams.get('code')
+        const scope = searchParams.get('scope')
+
+        if (code) {
+            handleGoogleLogin(code, scope);
+        }
+    }, [])
+
+    const handleGoogleLogin = async (code, scope) => {
+        setLoading(true)
+        try {
+            const { data: response } = await axiosInstance.get('/auth/socialite', {
+                params: { code, scope }
+            });
+            const { data: user } = response
+            const { name, roles, token, email, username } = user
+
+            if (token) {
+                Cookies.set('token', token)
+                dispatch({
+                    type: 'LOGIN',
+                    payload: {
+                        name: name,
+                        role: roles[0],
+                        token: token,
+                    },
+                })
+                toast.success('Login successful')
+            } else {
+                dispatch({
+                    type: 'OPEN_MODAL',
+                    payload: {
+                        content: 'Register',
+                        confirmLabel: 'Confirm'
+                    }
+                })
+                dispatch({
+                    type: 'SET_USER',
+                    payload: {
+                        name: name,
+                        username: username,
+                        email: email
+                    }
+                })
+            }
+        } catch (error) {
+            toast.error('Failed to login with Google');
+        } finally {
+            setLoading(false)
+        }
+    };
 
 
     return (

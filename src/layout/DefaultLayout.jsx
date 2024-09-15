@@ -6,6 +6,7 @@ import '../styles/component/guest/navbar-guest.scss'
 import '../styles/component/guest/sidebar-guest.scss'
 import Footer from '../component/guest/Footer'
 import { Toaster } from 'sonner'
+import Modal from '../component/Modal'
 
 const DefaultLayout = () => {
     return (
@@ -16,6 +17,7 @@ const DefaultLayout = () => {
           <Outlet />
           <Footer />
           <Toaster className="text-lg" position="top-left" />
+          <Modal />
         </div>
       </>
   )
