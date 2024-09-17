@@ -78,7 +78,7 @@ const Login = () => {
                 params: { code, scope }
             });
             const { data: user } = response
-            const { name, roles, token, email, username } = user
+            const { name, roles, token, tokenAccess, username } = user
 
             if (token) {
                 Cookies.set('token', token)
@@ -102,9 +102,8 @@ const Login = () => {
                 dispatch({
                     type: 'SET_USER',
                     payload: {
-                        name: name,
                         username: username,
-                        email: email
+                        tokenAccess: tokenAccess
                     }
                 })
             }

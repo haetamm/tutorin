@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registerFormWithGoogleSchema } from '../../utils/validation'
-import { registerWithGooleFields } from '../../utils/fields-input'
 import SelectInput from '../create-job/SelectInput'
 import { roleOptions } from '../../utils/field-select-input'
 import FormInput from '../create-job/FormInput'
@@ -15,7 +14,7 @@ import Cookies from 'js-cookie'
 const FormRegisterGoogle = () => {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false);
-    const { name, username, email } = useSelector((state) => state.regisUser)
+    const { username, tokenAccess } = useSelector((state) => state.regisUser)
     const { control, handleSubmit, reset, setError, formState: {  errors, isValid } } = useForm({
         resolver: zodResolver(registerFormWithGoogleSchema),
         mode: 'onChange',
@@ -23,9 +22,13 @@ const FormRegisterGoogle = () => {
     })
 
     const onSubmit = async (data) => {
+        const dataReq = {
+            ...data,
+            tokenAccess
+        }
         setLoading(true)
         try {
-            const { data: response } = await axiosInstance.post('/auth/register/with-google', data)
+            const { data: response } = await axiosInstance.post('/auth/register/with-google', dataReq)
             const { data: user } = response
             const { name, roles, token } = user
 
@@ -57,9 +60,7 @@ const FormRegisterGoogle = () => {
     const fetchUserSet = async () => {
         try {
             reset({
-                name: name || '',
                 username: username || '',
-                email: email || '',
             })
 
         } catch (error) {
@@ -75,25 +76,22 @@ const FormRegisterGoogle = () => {
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="text-2xl font-semibold leading-6 text-gray-900" id="modal-title">Create Account</div>
-                {registerWithGooleFields.map((field, index) => (
-                    <div key={index} className="my-2">
-                        <FormInput
-                            name={field.name}
-                            control={control}
-                            placeholder={field.name}
-                            errors={errors}
-                        />
-                        
-                    </div>
-                ))}
+                <div className="my-2">
+                    <FormInput
+                        name="username"
+                        control={control}
+                        placeholder="Username"
+                        errors={errors}
+                    />
+                </div>
                 <div className='my-1'></div>
-                <SelectInput
-                    name="role"
-                    control={control}
-                    options={roleOptions}
-                    placeholder="Select Role"
-                    errors={errors}
-                />
+                    <SelectInput
+                        name="role"
+                        control={control}
+                        options={roleOptions}
+                        placeholder="Select Role"
+                        errors={errors}
+                    />
                 <button 
                     type="submit" 
                     className="w-full block disabled:cursor-not-allowed bg-blue-700 disabled:bg-blue-400 hover:bg-blue-800 text-white font-semibold rounded-lg px-4 py-3 mt-1"

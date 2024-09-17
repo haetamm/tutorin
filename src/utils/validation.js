@@ -6,9 +6,7 @@ export const loginFormSchema = z.object({
 })
 
 export const registerFormWithGoogleSchema = z.object({
-  name: z.string().trim().min(4, 'Minimum 4 characters').max(23, 'Maximu, 23 characters').regex(/^[a-zA-Z ]+$/, "Name must contain only alphabet characters and spaces"),
   username: z.string().trim().min(1, 'Username is required'),
-  email: z.string().trim().min(1, 'Email is required').email('Invalid email format'),
   role: z.string().min(1, 'role is required')
 })
 

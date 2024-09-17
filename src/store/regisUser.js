@@ -1,18 +1,17 @@
 const DEFAULT_STATE = {
-    name: "",
-    email: "",
     username: "",
+    tokenAccess: "",
 }
 
 export const regisUserReducer = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case "DELETE_USER":
             return { 
-                ...state, name: "", email: "", username: "" 
+                ...state, tokenAccess: "", username: "" 
             }
         case "SET_USER":
             return {
-                ...state, name: action.payload.name, email: action.payload.email, username: action.payload.username,
+                ...state, tokenAccess: action.payload.tokenAccess, username: action.payload.username,
             }
         default:
             return state
