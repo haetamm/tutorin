@@ -20,7 +20,8 @@ const Navbar = () => {
             type: 'OPEN_MODAL',
             payload: {
                 content: 'Logout',
-                confirmLabel: 'Logout'
+                confirmLabel: 'Logout',
+                type: 'Small'
             }
         })
     }

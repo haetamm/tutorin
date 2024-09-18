@@ -3,18 +3,10 @@ import PropTypes from 'prop-types'
 import { Controller } from 'react-hook-form'
 import { fieldsProfilePage } from '../../utils/field-select-input'
 
-const ProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit, setValue }) => {
+const FormProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit, setValue }) => {
 
   return (
-    <div className="container mx-auto bg-white mt-5 mb-5 p-1 lg:p-5">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="flex flex-col items-center text-center p-1 border-b md:border-r md:border-b-0">
-          <img
-            className="rounded-full mt-5 w-56"
-            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-            alt="Profile"
-          />
-        </div>
+      <>
         <div className="md:col-span-2 p-5">
           <div className="flex justify-between items-center mb-4">
             <h4 className="text-xl font-bold">Profile Settings</h4>
@@ -77,12 +69,12 @@ const ProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit, set
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </>
+
   )
 }
 
-ProfilePageComp.propTypes = {
+FormProfilePageComp.propTypes = {
   control: PropTypes.object.isRequired,  
   errors: PropTypes.object.isRequired,   
   loading: PropTypes.bool.isRequired,    
@@ -91,4 +83,4 @@ ProfilePageComp.propTypes = {
   setValue: PropTypes.func.isRequired
 }
 
-export default ProfilePageComp
+export default FormProfilePageComp

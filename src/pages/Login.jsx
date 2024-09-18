@@ -96,7 +96,8 @@ const Login = () => {
                     type: 'OPEN_MODAL',
                     payload: {
                         content: 'Register',
-                        confirmLabel: 'Confirm'
+                        confirmLabel: 'Confirm',
+                        type: 'Small'
                     }
                 })
                 dispatch({

@@ -16,14 +16,15 @@ const Sidebar = () => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-        dispatch({
-            type: 'OPEN_MODAL',
-            payload: {
-                content: 'Logout',
-                confirmLabel: 'Logout'
-            }
-        })
-    }
+      dispatch({
+          type: 'OPEN_MODAL',
+          payload: {
+              content: 'Logout',
+              confirmLabel: 'Logout',
+              type: "Small"
+          }
+      })
+  }
 
   const links = [
     {
