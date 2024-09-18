@@ -4,6 +4,7 @@ import axiosInstance from '../../utils/api';
 import { dataURLtoBlob } from '../../utils/helper';
 import { toast } from 'sonner';
 import { useSelector, useDispatch } from 'react-redux';
+import { handleFormErrors } from '../../utils/error-handling';
 
 const CropImage = () => {
     const dispatch = useDispatch()
@@ -73,9 +74,8 @@ const CropImage = () => {
             })
             fetch()
         })
-        .catch(err => {
-            const response = err.response
-            console.log(response)
+        .catch(error => {
+            handleFormErrors(error)
         })
     };
 
@@ -108,7 +108,7 @@ const CropImage = () => {
                         guides={true}
                     />
                 }
-                <div className="relative lg:m-0 xs:ml-3 mt-6 lg:mt-0 items-center justify-center">
+                <div className="relative mt-6 ml-0 lg:ml-6 items-center justify-center mx-auto">
                     <div className="mb-0 xs:mb-2 w-full" onClick={() => setChange(true)} >
                         <input type="file" accept=".jpg, .jpeg, .png" onChange={onChange} className="fmt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0" />
                     </div>

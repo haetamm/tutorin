@@ -30,7 +30,7 @@ const Modal = () => {
   return (
     <>
       { isOpen && (
-          <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+          <div className="fixed inset-0 z-10 pt-0 xs:pt-36 lg:pt-0 flex items-center justify-center bg-gray-500 bg-opacity-75 transition-opacity overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <div className={`${type === 'Small' ? 'sm:max-w-lg md:w-full' : 'w-full lg:w-[80%] '} relative bg-white rounded-lg shadow-xl mx-4 my-8 mt-16`}>
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 rounded-lg">
               {content === "Logout" && 
