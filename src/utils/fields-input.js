@@ -22,3 +22,9 @@ export const resetPasswordFields = [
     { name: 'password', type: 'password', placeholder: 'Password', icon: null, isPasswordInput: true },
     { name: 'passwordConfirmation', type: 'password', placeholder: 'Password Confirmation', icon: null, isPasswordInput: true },
 ]
+
+export const fieldsSecurityProfilePage = [
+    { name: 'newPassword', type: 'password', placeholder: 'New Password', icon: null, isPasswordInput: true },
+    { name: 'newPasswordConfirmation', type: 'password', placeholder: 'New Password Confirmation', icon: null, isPasswordInput: true },
+    { name: 'password', type: 'password', placeholder: 'Password', icon: null, isPasswordInput: true },
+]

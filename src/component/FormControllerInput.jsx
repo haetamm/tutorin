@@ -16,11 +16,11 @@ const FormControllerInput = ({ name, control, defaultValue = '', type = 'text', 
                         {...field}
                         type={isPasswordInput ? (showPassword ? 'text' : 'password') : type}
                         placeholder={placeholder}
-                        className={`w-full px-4 py-3 rounded-md bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none pl-12 
-                        } ${error ? 'border-red-500' : ''}`}
+                        className={`w-full px-4 py-3 rounded-md bg-gray-200 mt-1 border focus:border-blue-500 focus:bg-white focus:outline-none pl-12 
+                            ${error ? 'border-red-500' : ''} `}
                     />
                     {isPasswordInput && <PasswordToggleIcon showPassword={showPassword} toggleShowPassword={toggleShowPassword} />}
-                    {error ? <small className="text-white text-sm mt-0 ml-3">{error && error.message}</small> : <small className="text-transparent select-none text-sm">not</small>}
+                    {error ? <small className="text-red-300 text-sm mt-0 ml-3">{error && error.message}</small> : <small className="text-transparent select-none text-sm">not</small>}
                 </div>
             )}
         />

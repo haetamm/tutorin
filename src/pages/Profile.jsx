@@ -8,8 +8,12 @@ import axiosInstance from '../utils/api'
 import { handleFormErrors } from '../utils/error-handling'
 import { toast } from 'sonner'
 import { zodResolver } from '@hookform/resolvers/zod'
+import '../styles/pages/profile.scss'
+import NavProfileComp from '../component/profile/NavProfileComp'
+import FormSecurityComp from '../component/profile/FormSecurityComp'
 
 const Profile = () => {
+    const [activeTab, setActiveTab] = useState(1);
     const dispatch = useDispatch()
     const {name} = useSelector((state) => state.user)
     const [image, setImage] = useState('')
@@ -86,6 +90,28 @@ const Profile = () => {
             }
         })
     }
+
+    const tabs = [
+        {
+            id: 1,
+            label: 'Profile',
+            component: (
+                <FormProfilePageComp
+                    control={control}
+                    errors={errors}
+                    loading={loading}
+                    handleSubmit={handleSubmit}
+                    onSubmit={onSubmit}
+                    setValue={setValue}
+                />
+            ),
+        },
+        {
+            id: 2,
+            label: 'Security',
+            component: <FormSecurityComp />,
+        },
+    ];
     
     return (
         <>
@@ -104,17 +130,33 @@ const Profile = () => {
                                 src={image}
                                 alt="Profile"
                             />
-                            </div>
-                            <FormProfilePageComp 
-                                control={control}
-                                errors={errors}
-                                loading={loading}
-                                handleSubmit={handleSubmit}
-                                onSubmit={onSubmit}
-                                setValue={setValue}
+                        </div>
+                        <div className="md:col-span-2 px-5 lg:px-3">
+                            <NavProfileComp
+                                setActiveTab={setActiveTab}
+                                activeTab={activeTab}
                             />
+                                <div className="tabs">
+                                    {tabs.map((tab) => (
+                                        <div key={tab.id} className="tab">
+                                            <input
+                                                type="radio"
+                                                name="tabs"
+                                                id={`tab${tab.id}`}
+                                                checked={activeTab === tab.id}
+                                                onChange={() => setActiveTab(tab.id)}
+                                            />
+                                            <div className="note-height">
+                                                <div className="note-wrap">
+                                                    {tab.component}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                         </div>
                     </div>
+                </div>
             </div>
         </>
     )

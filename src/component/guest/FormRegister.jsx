@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { Link } from 'react-router-dom'
 import { urlPage } from '../../utils/constans'
 
-const FormRegister = ({ name, fields, handleSubmit, onSubmit, loading, showPassword, control, toggleShowPassword, isValid, isSubmitting}) => {
+const FormRegister = ({ name, fields, handleSubmit, onSubmit, loading, showPassword, control, toggleShowPassword, isValid, isSubmitting }) => {
 
     const generateGoogleAuthUrl = () => {
         const redirectUri = import.meta.env.VITE_GOOGLE_REDIRECT_URI

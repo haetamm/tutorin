@@ -61,6 +61,14 @@ export const profileFormSchema = z.object({
   })
 })
 
+export const securityFormSchema = z.object({
+  password: z.string().trim().min(1, 'Password is required'),
+  newPassword: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Password must contain only alphanumeric characters"),
+  newPasswordConfirmation: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters'),
+}).refine((data) => data.newPassword === data.newPasswordConfirmation, {
+  message: "Passwords don't match",
+  path: ['newPasswordConfirmation'],
+})
 
 const today = new Date()
 today.setHours(0, 0, 0, 0)
