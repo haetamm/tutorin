@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
+    const [image, setImage] = useState('')
+
+    useEffect(() => {
+        if (tutor.image) {
+            const timestamp = new Date().getTime();
+            setImage(`${import.meta.env.VITE_API_BASE_URL}profile/${tutor.image.id}/images?timestamp=${timestamp}`);
+        } else {
+            setImage('https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg');
+        }
+    }, [])
+
     return (
         <>
             <div key={tutor.id} className="flex w-full mb-4">
@@ -11,7 +22,7 @@ const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
                             <div className="w-[20%] justify-center items-center text-center">
                                 <img
                                     className="rounded-full w-36"
-                                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                                    src={image}
                                     alt="Profile"
                                 />
                             </div>
@@ -52,7 +63,7 @@ const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
 MessageDetailCard.propTypes = {
     tutor: PropTypes.object.isRequired,
     updateStatus: PropTypes.func.isRequired,
-    loading: PropTypes.object.isRequired
+    loading: PropTypes.bool.isRequired
 }
 
 export default MessageDetailCard

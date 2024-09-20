@@ -46,7 +46,7 @@ const FormSecurityComp = () => {
                                 name={field.name}
                                 control={control}
                                 type={field.isPasswordInput ? (showPassword ? 'text' : 'password') : field.type}
-                                placeholder={field.placeholder}
+                                placeholder=""
                                 icon={field.icon}
                                 isPasswordInput={field.isPasswordInput}
                                 showPassword={showPassword}
@@ -55,11 +55,8 @@ const FormSecurityComp = () => {
                         </div>
                     ))}
                     <div>
-                        <label className="block text-gray-700">Forgot Password</label>
-                        <div
-                            className="w-full h-[49px] mt-1 bg-blue-400 px-4 py-3 border border-gray-300 text-black rounded text-center text-md "
-                        >
-                            <Link to={urlPage.FORGOT_PASSWORD} className="cursor-pointer">Reset</Link>
+                        <div className="w-full h-[49px] mt-1 xs:mt-7 bg-blue-400 px-4 py-3 border border-gray-300 text-black rounded text-center text-md">
+                            <Link to={urlPage.FORGOT_PASSWORD} className="cursor-pointer hover:underline">Forgot Password?</Link>
                         </div>
                     </div>
 
