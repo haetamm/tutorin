@@ -14,6 +14,26 @@ export const forgotPasswordFormSchema = z.object({
   email: z.string().trim().min(1, 'Email is required').email('Invalid email format'),
 })
 
+export const resumeFormShema = z.object({
+  resume: z.custom((value) => {
+    if (!value || !(value instanceof File)) {
+      return false
+    }
+    const allowedMimeType = 'application/pdf'
+    if (value.type !== allowedMimeType) {
+      return false
+    }
+    
+    const maxSizeInBytes = 512000
+    if (value.size > maxSizeInBytes) {
+      return false
+    }
+    return true
+  }, {
+    message: 'Please upload a valid PDF file with a maximum size of 500kb',
+  })
+})
+
 export const resetPasswordFormSchema = z.object({
   password: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters').regex(/^[a-zA-Z0-9]+$/, "Password must contain only alphanumeric characters"),
   passwordConfirmation: z.string().trim().min(4, 'Minimum 4 characters').max(8, 'Maximum 8 characters'),
@@ -42,23 +62,6 @@ export const profileFormSchema = z.object({
   city: z.string().trim().min(1, 'City is required').max(50, 'Maximum 50 characters'),
   country: z.string().trim().min(1, 'Country is required').max(50, 'Maximum 50 characters'),
   postcode: z.string().trim().min(1, 'Postcode is required').max(6, 'Maximum 6 characters'),
-  resume: z.custom((value) => {
-    if (!value || !(value instanceof File)) {
-      return false
-    }
-    const allowedMimeType = 'application/pdf'
-    if (value.type !== allowedMimeType) {
-      return false
-    }
-    
-    const maxSizeInBytes = 5 * 1024 * 1024
-    if (value.size > maxSizeInBytes) {
-      return false
-    }
-    return true
-  }, {
-    message: 'Please upload a valid PDF file with a maximum size of 5MB',
-  })
 })
 
 export const securityFormSchema = z.object({

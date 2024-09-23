@@ -11,7 +11,7 @@ const FormControllerInput = ({ name, control, defaultValue = '', type = 'text', 
             defaultValue={defaultValue}
             render={({ field, fieldState: { error } }) => (
                 <div className="relative font-normal m-0">
-                    {Icon && <Icon className="absolute left-3 top-5 h-6 w-6 text-gray-400 cursor-pointer"/>}
+                    {Icon && <Icon className="absolute left-3 top-4 h-6 w-6 text-gray-400 cursor-pointer"/>}
                     <input
                         {...field}
                         type={isPasswordInput ? (showPassword ? 'text' : 'password') : type}

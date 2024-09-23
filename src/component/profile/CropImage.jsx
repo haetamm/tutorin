@@ -59,7 +59,7 @@ const CropImage = () => {
             formData.append('image', blob, 'profile.png');
         }
 
-        axiosInstance.put('/profile/image', formData, {
+        axiosInstance.post('/user/image', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -82,7 +82,7 @@ const CropImage = () => {
 
     return (
         <>
-            <div className="w-full inline-block lg:flex mt-4">
+            <div className="w-full inline-block lg:flex mt-0">
                 {!change &&
                 <div className="flex items-center justify-center w-full lg:w-[65%]">
                     <img src={image} className=" w-[300px] h-[300px]" alt="image-profile" />
@@ -92,7 +92,6 @@ const CropImage = () => {
                 {change &&
                     <Cropper
                         ref={cropperRef}
-                        // style={{ height: 400 }}
                         className="w-full lg:w-[65%] h-[300px]"
                         // zoomTo={0.5}
                         initialAspectRatio={1}

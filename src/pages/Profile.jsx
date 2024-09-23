@@ -11,11 +11,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import '../styles/pages/profile.scss'
 import NavProfileComp from '../component/profile/NavProfileComp'
 import FormSecurityComp from '../component/profile/FormSecurityComp'
+import FormUploadResume from '../component/profile/FormUploadResume'
 
 const Profile = () => {
+    const {name} = useSelector((state) => state.user)
     const [activeTab, setActiveTab] = useState(1);
     const dispatch = useDispatch()
-    const {name} = useSelector((state) => state.user)
+    const [profile, setProfile] = useState({})
     const [image, setImage] = useState('')
     const [loading, setLoading] = useState(false)
     const { control, handleSubmit, setValue, reset, setError, formState: { errors } } = useForm({
@@ -27,14 +29,15 @@ const Profile = () => {
         try {
             const { data: response } = await axiosInstance.get('/profile')
             const { data: profile } = response
+            setProfile(profile)
             if (profile.image) {
-                const timestamp = new Date().getTime(); // Adding a timestamp to bust the cache
-                setImage(`${import.meta.env.VITE_API_BASE_URL}profile/${profile.image.id}/images?timestamp=${timestamp}`);
+                const timestamp = new Date().getTime();
+                setImage(`${import.meta.env.VITE_API_BASE_URL}user/${profile.image.id}/images?timestamp=${timestamp}`);
+                
             } else {
                 setImage('https://avatars.githubusercontent.com/u/90743535?s=96&v=4');
             }
             
-
             reset({
                 name: profile.name || '',
                 username: profile.username || '',
@@ -44,9 +47,7 @@ const Profile = () => {
                 city: profile.city || '',
                 country: profile.country || '',
                 postcode: profile.postcode || '',
-                resume: null,
             })
-
         } catch (error) {
             handleFormErrors(error, setError)
         }
@@ -58,7 +59,6 @@ const Profile = () => {
   
     const onSubmit = async (data) => {
         setLoading(true)
-
         try {
             const { data: response } = await axiosInstance.put('/profile', data)
             const { data: profile } = response
@@ -129,6 +129,11 @@ const Profile = () => {
                                 className="rounded-full mt-5 w-56 h-56 cursor-pointer"
                                 src={image}
                                 alt="Profile"
+                            />
+                            <FormUploadResume 
+                                resume={profile.resume}
+                                fetchProfile={fetchProfile}
+                                name={profile.name}
                             />
                         </div>
                         <div className="md:col-span-2 px-5 lg:px-3">

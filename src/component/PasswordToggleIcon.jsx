@@ -4,7 +4,7 @@ import { IoIosEye, IoIosEyeOff } from 'react-icons/io'
 
 const PasswordToggleIcon = ({ showPassword, toggleShowPassword }) => (
   <div onClick={toggleShowPassword} >
-    {!showPassword ? <IoIosEye className="absolute left-3 top-5 h-6 w-6 text-gray-400 cursor-pointer"/> : <IoIosEyeOff  className="absolute left-3 top-5 h-6 w-6 text-gray-400 cursor-pointer"/>}
+    {!showPassword ? <IoIosEye className="absolute left-3 top-4 h-6 w-6 text-gray-400 cursor-pointer"/> : <IoIosEyeOff  className="absolute left-3 top-4 h-6 w-6 text-gray-400 cursor-pointer"/>}
   </div>
 );
 

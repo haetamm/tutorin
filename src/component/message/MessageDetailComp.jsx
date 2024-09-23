@@ -58,6 +58,7 @@ const MessageDetailComp = () => {
       console.error('Error updating status:', error)
     } finally {
       setLoading(prev => ({ ...prev, [tutorId]: false }))
+      setLoading(false)
     }
   }
 
@@ -96,6 +97,7 @@ const MessageDetailComp = () => {
                         <MessageDetailCard
                           key={index} 
                           tutor={tutor}
+                          jobId={job.jobId}
                           updateStatus={updateStatus}
                           loading={loading}
                         />

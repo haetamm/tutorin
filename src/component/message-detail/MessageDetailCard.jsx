@@ -1,17 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { handleFormErrors } from '../../utils/error-handling'
+import axiosInstance from '../../utils/api'
 
-const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
+const MessageDetailCard = ({ tutor, jobId, updateStatus, loading}) => {
+    const timestamp = new Date().getTime()
+    const [loadingDownload, setLoadingDownload] = useState(false)
     const [image, setImage] = useState('')
 
     useEffect(() => {
         if (tutor.image) {
-            const timestamp = new Date().getTime();
-            setImage(`${import.meta.env.VITE_API_BASE_URL}profile/${tutor.image.id}/images?timestamp=${timestamp}`);
+            setImage(`${import.meta.env.VITE_API_BASE_URL}user/${tutor.image.id}/images?timestamp=${timestamp}`);
         } else {
             setImage('https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg');
         }
     }, [])
+
+    const handleDownloadResume = async (id, tutorId, jobId) => {
+        setLoadingDownload(true)
+        try {
+            const response = await axiosInstance.get(`/user/${id}/resume?jobId=${jobId}&tutorId=${tutorId}`, {
+                responseType: 'blob',
+            });
+            
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            window.open(url);
+        } catch (error) {
+            handleFormErrors(error, null)
+            console.error('Error fetching resume:', error)
+        } finally {
+            setLoadingDownload(false)
+        }
+    };
+    
 
     return (
         <>
@@ -33,8 +55,8 @@ const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
                             </div>
                         </div>
                         <div className="p-2">
-                            <button className=" p-1 w-full capitalize bg-black text-white">
-                                View application
+                            <button onClick={() => {handleDownloadResume(tutor?.resume?.id, tutor.id, jobId)}} className=" p-1 w-full capitalize bg-black text-white">
+                                {loadingDownload ? 'Loading...': 'View Resume' }
                             </button>
                         </div>
                         <div className="p-2 pt-1 flex gap-3">
@@ -62,6 +84,7 @@ const MessageDetailCard = ({ tutor, updateStatus, loading}) => {
 
 MessageDetailCard.propTypes = {
     tutor: PropTypes.object.isRequired,
+    jobId: PropTypes.string.isRequired,
     updateStatus: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired
 }

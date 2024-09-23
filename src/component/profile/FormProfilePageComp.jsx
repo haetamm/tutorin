@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Controller } from 'react-hook-form'
 import { fieldsProfilePage } from '../../utils/field-select-input'
 
-const FormProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit, setValue }) => {
+const FormProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit }) => {
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="pt-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {fieldsProfilePage.map((field, index) => (
             <div key={index}>
               <label className="block text-gray-700">{field.label}</label>
@@ -32,29 +32,7 @@ const FormProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit,
               />
             </div>
           ))}
-          <div>
-            <label className="block text-gray-700">Resume</label>
-            <Controller
-              name="resume"
-              control={control}
-              defaultValue={null}
-              render={() => (
-                <div>
-                  <input
-                    type="file"
-                    onChange={(e) => {
-                      const file = e.target.files[0]
-                      setValue('resume', file)
-                    }}
-                    className="w-full p-2 border border-gray-300 rounded font-normal"
-                  />
-                  {errors.resume && (
-                    <small className="font-normal text-red-500">{errors.resume.message}</small>
-                  )}
-                </div>
-              )}
-            />
-          </div>
+        </div>
           <button
             type="submit"
             className="w-full h-[47px] mt-6 bg-blue-400 p-2 border border-gray-300 rounded"
@@ -62,7 +40,6 @@ const FormProfilePageComp = ({ control, errors, loading, handleSubmit, onSubmit,
           >
             {loading ? 'Loading...' : 'Save'}
           </button>
-        </div>
       </form>
     </>
 
