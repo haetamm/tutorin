@@ -1,30 +1,37 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { Toaster } from 'sonner'
-import { urlPage } from '../utils/constans'
-import Navbar from '../component/Navbar'
-import Modal from '../component/Modal'
+import React, { useEffect } from "react";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Toaster } from "sonner";
+import { urlPage } from "../utils/constans";
+import Navbar from "../component/Navbar";
+import Modal from "../component/Modal";
+import useUserStore from "../store/user";
+import { useProfileStore } from "../store/profile";
 
 const AuthLayout = () => {
-  const { token } = useSelector((state) => state.user)
-  const { pathname } = useLocation()
-  
-  const isStudentMessagePage = pathname.startsWith(urlPage.STUDENT_NOTIFICATION)
-  const isTutorMessagePage = pathname.startsWith(urlPage.TUTOR_NOTIFICATION)
-  
+  const { token } = useUserStore();
+  const { pathname } = useLocation();
+  const { fetchProfile } = useProfileStore();
+
+  const isTutorMessagePage = pathname.startsWith(urlPage.HOME);
+
+  useEffect(() => {
+    if (token) {
+      fetchProfile();
+    }
+  }, [fetchProfile, token]);
+
   if (!token) {
-    return <Navigate to={`${urlPage.LOGIN}`} />
+    return <Navigate to={`${urlPage.LOGIN}`} />;
   }
 
   return (
     <>
-      {!isStudentMessagePage && !isTutorMessagePage && <Navbar />}
+      {isTutorMessagePage && <Navbar />}
       <Outlet />
-      <Toaster className="text-lg" position='top-left' />
+      <Toaster className="text-lg" position="top-left" />
       <Modal />
     </>
-  )
-}
+  );
+};
 
-export default AuthLayout
+export default AuthLayout;

@@ -1,20 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate, Outlet } from 'react-router-dom'
-import { urlPage } from '../utils/constans.js'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { urlPage } from "../utils/constans.js";
+import useUserStore from "../store/user.js";
 
 const GuestLayout = () => {
-    const user = useSelector((state) => state.user)
-  
-    if (user.token) {
-        return <Navigate to={`${urlPage.STUDENT}`} />
-    }
+  const { token } = useUserStore();
 
-    return (
-        <>
-            <Outlet />
-        </>
-    )
-}
+  if (token) {
+    return <Navigate to={`${urlPage.STUDENT}`} />;
+  }
 
-export default GuestLayout
+  return (
+    <>
+      <Outlet />
+    </>
+  );
+};
+
+export default GuestLayout;

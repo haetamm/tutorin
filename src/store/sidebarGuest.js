@@ -1,14 +1,13 @@
-const DEFAULT_STATE = {
-    isOpen: false,
-}
+import { create } from "zustand";
 
-export const sidebarGuestReducer = (state = DEFAULT_STATE, action) => {
-    switch (action.type) {
-        case "CLOSE_SIDEBAR_GUEST":
-            return { ...state, isOpen: false }
-        case "OPEN_SIDEBAR_GUEST":
-            return { ...state, isOpen: true }
-        default:
-            return state
-    }
-}
+export const useSidebarGuest = create((set) => ({
+  isOpen: false,
+
+  openSidebar: () => {
+    set({ isOpen: true });
+  },
+
+  closeSidebar: () => {
+    set({ isOpen: false });
+  },
+}));

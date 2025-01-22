@@ -1,6 +1,6 @@
-import React from 'react'
-import { Controller } from 'react-hook-form'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Controller } from "react-hook-form";
+import PropTypes from "prop-types";
 
 const SelectInput = ({ name, control, options, placeholder, errors }) => (
   <div className="select-wrap">
@@ -9,7 +9,9 @@ const SelectInput = ({ name, control, options, placeholder, errors }) => (
       control={control}
       render={({ field }) => (
         <select
-          className={`p-2 w-full h-[44px] outline-none border-black border-2 ${errors[name] ? 'border-red-500' : ''}`}
+          className={`p-2 w-full h-[44px] outline-none border-black border-2 ${
+            errors[name] ? "border-red-500" : ""
+          }`}
           {...field}
         >
           <option value="">{placeholder}</option>
@@ -23,7 +25,7 @@ const SelectInput = ({ name, control, options, placeholder, errors }) => (
     />
     {errors[name] && <p className="error-message">{errors[name].message}</p>}
   </div>
-)
+);
 
 SelectInput.propTypes = {
   name: PropTypes.string.isRequired,
@@ -31,11 +33,11 @@ SelectInput.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired
+      label: PropTypes.string.isRequired,
     })
   ).isRequired,
   placeholder: PropTypes.string.isRequired,
-  errors: PropTypes.object.isRequired
-}
+  errors: PropTypes.object.isRequired,
+};
 
 export default SelectInput;

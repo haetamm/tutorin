@@ -1,43 +1,44 @@
 .active {
-    border-radius: 3px;
-    font-weight: bold;
-    box-shadow: rgba(121, 121, 244, 0.25) 0px 30px 60px -12px inset, rgba(205, 197, 197, 0.3) 0px 18px 36px -18px inset;
+  border-radius: 3px;
+  font-weight: bold;
+  box-shadow: rgba(121, 121, 244, 0.25) 0px 30px 60px -12px inset,
+    rgba(205, 197, 197, 0.3) 0px 18px 36px -18px inset;
 }
 
 .note-nav {
-    margin: 10px 0 0 0;
+  margin: 10px 0 0 0;
 
-    ul {
-        list-style: none;
-        font-size: 18px;
-        display: flex;
+  ul {
+    list-style: none;
+    font-size: 18px;
+    display: flex;
 
-        li {
-            display: inline;
-            padding: 4px 8px 4px 8px;
-            cursor: pointer;
-            margin-right: 3px;
-        }
-
-        li:hover {
-            background-color: seashell;
-        }
+    li {
+      display: inline;
+      padding: 4px 8px 4px 8px;
+      cursor: pointer;
+      margin-right: 3px;
     }
+
+    li:hover {
+      background-color: seashell;
+    }
+  }
 }
 
 @media only screen and (min-width: 1025px) {
-    .note-nav {
-        ul {
-            margin-top: 10px;
-            margin-bottom: 10px;
+  .note-nav {
+    ul {
+      margin-top: 10px;
+      margin-bottom: 10px;
 
-            li {
-                padding: 4px 13px 4px 13px;
-            }
+      li {
+        padding: 4px 13px 4px 13px;
+      }
 
-            li:hover {
-                background-color: seashell;
-            }
-        }
+      li:hover {
+        background-color: seashell;
+      }
     }
+  }
 }

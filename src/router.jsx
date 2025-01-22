@@ -1,170 +1,155 @@
-import GuestLayout from "./layout/GuestLayout"
-import Login from "./pages/Login"
-import NotFound from "./pages/NotFound"
-import { createBrowserRouter, Navigate } from "react-router-dom"
-import RegisterTutor from "./pages/RegisterTutor"
-import RegisterStudent from "./pages/RegisterStudent"
-import AuthLayout from "./layout/AuthLayout"
-import Home from "./pages/Home"
-import JobDetail from "./pages/JobDetail"
-import JobDetailMobile from "./pages/JobDetailMobile"
-import Student from "./pages/Student"
-import Profile from "./pages/Profile"
-import Message from "./pages/Message"
-import MessageDetail from "./pages/MessageDetail"
-import StudentMessageDetailMobile from "./pages/StudentMessageDetailMobile"
-import Tutor from "./pages/Tutor"
-import CreateJob from "./pages/CreateJob"
-import Application from "./pages/Application"
-import TutorMessageDetailMobile from "./pages/TutorMessageDetailMobile"
-import DefaultLayout from "./layout/DefaultLayout"
-import LandingPage from './pages/LandingPage'
-import ForgotPassword from "./pages/ForgotPassword"
-import ResetPassword from "./pages/ResetPassword"
+import GuestLayout from "./layout/GuestLayout";
+import LoginPage from "./pages/LoginPage";
+import NotFound from "./pages/NotFound";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import RegisterTutorPage from "./pages/RegisterTutorPage";
+import RegisterStudentPage from "./pages/RegisterStudentPage";
+import AuthLayout from "./layout/AuthLayout";
+import HomePage from "./pages/HomePage";
+import JobDetailPage from "./pages/JobDetailPage";
+import StudentLayout from "./layout/StudentLayout";
+import ProfilePage from "./pages/ProfilePage";
+import NotificationPage from "./pages/NotificationPage";
+import NotificationDetailPage from "./pages/NotificationDetailPage";
+import CreateJobPage from "./pages/CreateJobPage";
+import ApplicationPage from "./pages/ApplicationPage";
+import DefaultLayout from "./layout/DefaultLayout";
+import LandingPage from "./pages/LandingPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import TutorLayout from "./layout/TutorLayout";
 
 const routerConfig = [
-    {
-        path: '/',
-        element: <DefaultLayout />,
+  {
+    path: "/",
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        path: "/auth",
+        element: <GuestLayout />,
         children: [
-            {
-                path: '/',
-                element: <LandingPage />
-            },
-            {
-                path: '/auth',
-                element: <GuestLayout />,
-                children: [
-                    {
-                        path: '/auth',
-                        element: <Navigate to="login" />
-                    },
-                    {
-                        path: "login",
-                        element: <Login />
-                    },
-                    {
-                        path: "register/tutor",
-                        element: <RegisterTutor />
-                    },
-                    {
-                        path: "register/student",
-                        element: <RegisterStudent />
-                    }
-                ]
-            },
-            {
-                path: '/forgot-password',
-                element: <ForgotPassword />
-            },
-            {
-                path: '/reset-password',
-                element: <ResetPassword />
-            }
-        ]
-    },
-    {
-        path: '/in',
-        element: <AuthLayout />,
-        children: [
-            {
-                path: '',
-                element: <Navigate to='student' replace />,
-            },
-            {
-                path: 'student',
-                element: <Student />,
-                children: [
-                    {
-                        path: '',
-                        element: <Navigate to='profile' replace />,
-                    },
-                    {
-                        path: 'profile',
-                        element: <Profile />
-                    },
-                    {
-                        path: 'notifications',
-                        element: <Message />,
-                        children: [
-                            {
-                                path: '', 
-                                element: <Navigate to='1' replace />, 
-                            },
-                            {
-                                path: ':id', 
-                                element: <MessageDetail />,
-                            },
-                        ]
-                    },
-                    {
-                        path: 'create/job',
-                        element: <CreateJob />
-                    }
-                ]
-            },
-            {
-                path: 'home',
-                element: <Home />,
-                children: [
-                    {
-                        path: '',
-                        element: <Navigate to='job/1' replace />,
-                    },
-                    {
-                        path: 'job/:id',
-                        element: <JobDetail />,
-                    },
-                ],
-            },
-            {
-                path: 'tutor',
-                element: <Tutor />,
-                children: [
-                    {
-                        path: 'profile',
-                        element: <Profile />
-                    },
-                    {
-                        path: 'applications',
-                        element: <Application />
-                    },
-                    {
-                        path: 'notifications',
-                        element: <Message />,
-                        children: [
-                            {
-                                path: '', 
-                                element: <Navigate to='1' replace />, 
-                            },
-                            {
-                                path: ':id', 
-                                element: <MessageDetail />,
-                            },
-                        ]
-                    }
-                ]
-            }
+          {
+            path: "",
+            element: <Navigate to="login" />,
+          },
+          {
+            path: "login",
+            element: <LoginPage />,
+          },
+          {
+            path: "register/tutor",
+            element: <RegisterTutorPage />,
+          },
+          {
+            path: "register/student",
+            element: <RegisterStudentPage />,
+          },
         ],
-    },
-    {
-        path: '/m/tutorin/:id',
-        element: <JobDetailMobile />
-    },
-    {
-        path: '/m/student/notifications/:id',
-        element: <StudentMessageDetailMobile />
-    },
-    {
-        path: '/m/tutor/notifications/:id',
-        element: <TutorMessageDetailMobile />
-    },
-    {
-        path: '*',
-        element: <NotFound />
-    }
-]
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPasswordPage />,
+      },
+    ],
+  },
+  {
+    path: "/in",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "",
+        element: <Navigate to="student" replace />,
+      },
+      {
+        path: "student",
+        element: <StudentLayout />,
+        children: [
+          {
+            path: "",
+            element: <Navigate to="profile" replace />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+          {
+            path: "notifications",
+            element: <NotificationPage />,
+            children: [
+              {
+                path: "",
+                element: <Navigate to="list" replace />,
+              },
+              {
+                path: ":id",
+                element: <NotificationDetailPage />,
+              },
+            ],
+          },
+          {
+            path: "create/job",
+            element: <CreateJobPage />,
+          },
+        ],
+      },
+      {
+        path: "home",
+        element: <HomePage />,
+        children: [
+          {
+            path: "",
+            element: <Navigate to="job/list" replace />,
+          },
+          {
+            path: "job/:id",
+            element: <JobDetailPage />,
+          },
+        ],
+      },
+      {
+        path: "tutor",
+        element: <TutorLayout />,
+        children: [
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+          {
+            path: "applications",
+            element: <ApplicationPage />,
+          },
+          {
+            path: "notifications",
+            element: <NotificationPage />,
+            children: [
+              {
+                path: "",
+                element: <Navigate to="list" replace />,
+              },
+              {
+                path: ":id",
+                element: <NotificationDetailPage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+];
 
-const router = createBrowserRouter(routerConfig)
+const router = createBrowserRouter(routerConfig);
 
-export default router
+export default router;

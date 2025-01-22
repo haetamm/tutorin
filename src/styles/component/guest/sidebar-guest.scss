@@ -1,21 +1,28 @@
-// sidebar-guest.scss
+.sidebar-active {
+  background-color: #46b1f8;
+  color: #333333;
+  font-weight: bold;
+}
+
 .menubar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px; /* Adjust the width as needed */
+  width: 250px;
   height: 100%;
-  background-color: #f5f5f5;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  padding: 2px 0;
+  background-color: #79c9fa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   animation: slideIn 0.3s forwards;
+  color: #333333;
 
   .link {
     display: flex;
     padding: 10px;
     align-items: center;
   }
-  
+
   ul {
     padding: 0;
     margin: 0;

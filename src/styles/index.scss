@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta-Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta-Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 html,
 body,
@@ -19,38 +19,37 @@ p {
 }
 
 body {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    color: #212121;
-    font-weight: 600;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #212121;
 }
 
 :root {
-    --background: #f6f6f6;
-    // --background: white;
-    --navbar-width: 250px;
-    --navbar-width-min: 60px;
-    --navbar-dark-primary: #18283b;
-    --navbar-dark-secondary: #2c3e50;
-    --navbar-light-primary: #f5f6fa;
-    --navbar-light-secondary: #86baff;
-    // --tab-bg: #f6f6f6;
-    --fallback-b2: #8799e1;
-    --tw-border-opacity: 0.8;
-    --fallback-b1: #acb9f3;
-    --b1: #f7f7f8;
-    --b2: #4a4d5d;
-    --tw-bg-opacity: 0.8;
+  --background: #f6f6f6;
+  // --background: white;
+  --navbar-width: 250px;
+  --navbar-width-min: 60px;
+  --navbar-dark-primary: #18283b;
+  --navbar-dark-secondary: #2c3e50;
+  --navbar-light-primary: #f5f6fa;
+  --navbar-light-secondary: #86baff;
+  // --tab-bg: #f6f6f6;
+  --fallback-b2: #8799e1;
+  --tw-border-opacity: 0.8;
+  --fallback-b1: #acb9f3;
+  --b1: #f7f7f8;
+  --b2: #4a4d5d;
+  --tw-bg-opacity: 0.8;
 
-    // navbar partial
-    --menu-item-size: 50px;
-    --tw-text-opacity: 1;
-    --bluee-color: rgb(96 165 250 / var(--tw-text-opacity));
-    --blue-color: #099c95;
-    --dark-green-color: #175b52;
-    --white-color: #FFF;
+  // navbar partial
+  --menu-item-size: 50px;
+  --tw-text-opacity: 1;
+  --bluee-color: rgb(96 165 250 / var(--tw-text-opacity));
+  --blue-color: #099c95;
+  --dark-green-color: #175b52;
+  --white-color: #fff;
 }
 
 .nav-background {
@@ -58,23 +57,37 @@ body {
 }
 
 .background-landingpage {
-  background-image: radial-gradient(circle at top right, rgb(13, 141, 190) 0%, rgb(13, 141, 190) 46%,rgb(22, 153, 204) 46%, rgb(22, 153, 204) 49%,rgb(31, 166, 217) 49%, rgb(31, 166, 217) 52%,rgb(40, 178, 231) 52%, rgb(40, 178, 231) 54%,rgb(49, 190, 244) 54%, rgb(49, 190, 244) 100%);
+  background-image: radial-gradient(
+    circle at top right,
+    rgb(13, 141, 190) 0%,
+    rgb(13, 141, 190) 46%,
+    rgb(22, 153, 204) 46%,
+    rgb(22, 153, 204) 49%,
+    rgb(31, 166, 217) 49%,
+    rgb(31, 166, 217) 52%,
+    rgb(40, 178, 231) 52%,
+    rgb(40, 178, 231) 54%,
+    rgb(49, 190, 244) 54%,
+    rgb(49, 190, 244) 100%
+  );
 }
 
 .background-footer {
   --tw-bg-opacity: 1;
-    background-color: rgb(119, 212, 249 );
+  background-color: rgb(119, 212, 249);
 }
 
 .text-footer-custom {
   --tw-text-opacity: 1;
-    color: rgb(119, 212, 249);
+  color: rgb(119, 212, 249);
 }
 
 .shadow-custom-login {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(9, 8, 8, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(9, 8, 8, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .shadow-custome {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
