@@ -39,3 +39,8 @@ export const locationsOption = [
   { id: 2, name: "surabaya" },
   { id: 3, name: "surakarta" },
 ];
+
+export const statusOption = [
+  { value: "INACTIVE", label: "I got hired" },
+  { value: "INACTIVE", label: "I withdrew my application" },
+];

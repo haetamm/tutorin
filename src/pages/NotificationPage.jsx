@@ -37,7 +37,7 @@ const NotificationPage = () => {
               </div>
             </div>
 
-            <div className="hidden lg:block w-full lg:w-[70%] font-normal">
+            <div className="hidden lg:block w-full lg:w-[70%] font-normal xl:border-r-2 border-black">
               <Outlet />
             </div>
           </div>

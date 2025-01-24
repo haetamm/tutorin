@@ -21,7 +21,15 @@ const FormGuestPage = ({
 }) => {
   return (
     <>
-      <div className="bg-transparent w-full md:max-w-md mt-0 lg:max-w-full md:mx-auto md:w-[50%] tab:w-[30%] xl:w-[27%] px-6 sm:px-24 md:px-7 tab:px-4 lg:px-5 xl:px-7 flex items-center justify-center">
+      <div
+        className={` ${
+          name === "Register Tutor" || name === "Register Student"
+            ? "h-[630px]"
+            : name !== "Login"
+            ? "h-full"
+            : "h-[380px]"
+        } bg-transparent w-full md:max-w-md mt-0 lg:max-w-full my-auto md:w-[50%] md:mx-auto tab:w-[30%] xl:w-[27%] px-6 sm:px-24 md:px-7 tab:px-4 lg:px-5 xl:px-7 flex items-center justify-center max-auto 2xl:px-0 2xl:pl-7 2xl:pr-0`}
+      >
         <div className="w-full h-100 ">
           <h1 className="text-2xl font-bold leading-tight text-center mb-2">
             {name}

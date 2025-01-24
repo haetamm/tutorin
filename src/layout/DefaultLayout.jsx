@@ -1,6 +1,6 @@
 import React from "react";
 import NavbarGuest from "../component/guest/NavbarGuest";
-import SideBar from "../component/guest/SideBarGuest";
+import SideBarGuest from "../component/guest/SideBarGuest";
 import { Outlet } from "react-router-dom";
 import "../styles/component/guest/navbar-guest.scss";
 import "../styles/component/guest/sidebar-guest.scss";
@@ -13,7 +13,7 @@ const DefaultLayout = () => {
     <>
       <div className="min-h-screen flex flex-col background-landingpage">
         <NavbarGuest />
-        <SideBar />
+        <SideBarGuest />
         <Outlet />
         <Footer />
         <Toaster className="text-lg" position="top-left" />

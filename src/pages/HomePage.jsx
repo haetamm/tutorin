@@ -20,15 +20,17 @@ const HomePage = () => {
         <title>Jobs . Tutorin</title>
         <meta name="description" content="Jobs page" />
       </Helmet>
-      <div className="flex overflow-auto h-screen pt-[175px] xs:pt-[130px] md:pt-[142px] flex-1">
-        <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 border-r-2 border-black">
-          <ListJob />
-          <div className="flex flex-none justify-center border border-gray-300 bg-white">
-            <Pagination />
+      <div className="w-full flex justify-center">
+        <div className="kontener flex overflow-auto h-screen pt-[175px] xs:pt-[123px] md:pt-[126px] flex-1">
+          <div className="flex w-full flex-col overflow-auto lg:w-[31%] border-3 xl:border-l-[1px] lg:border-r-[1px] border-black">
+            <ListJob />
+            <div className="flex flex-none justify-center border border-gray-300 bg-white">
+              <Pagination />
+            </div>
           </div>
-        </div>
-        <div className="hidden w-[69%] overflow-auto lg:block">
-          <Outlet />
+          <div className="hidden w-[69%] overflow-auto no-scrollbar lg:block border-gray-300 border-r-[1px]">
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

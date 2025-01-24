@@ -13,8 +13,12 @@ const StudentLayout = () => {
 
   return (
     <>
-      <Sidebar />
-      <Outlet />
+      <div className="w-full jusitfy-center">
+        <div className="kontener mx-auto">
+          <Sidebar />
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

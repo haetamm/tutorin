@@ -23,7 +23,7 @@ const Navbar = () => {
     <>
       <div className={`fixed w-full`}>
         <div className="w-full nav-background opacity-98 border-b-2 border-gray-300 text-gray-900 py-2 xs:pb-4">
-          <div className="container mx-auto flex justify-end lg:justify-between pr-3">
+          <div className="kontener mx-auto flex justify-end lg:justify-between pr-3">
             <div className="relative lg:flex lg:flex-1 items-center text-white ml-5 hidden">
               <Link
                 to="/"

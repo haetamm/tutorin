@@ -14,61 +14,72 @@ const NavbarGuest = () => {
 
   return (
     <>
-      <nav
-        className={`fixed w-full transition-all duration-300 ${
+      <div
+        className={`w-full flex justify-center h-[75px] fixed transition-all duration-300 z-[1000] ${
           isScrolled ? "text-[#333333] bg-[#79c9fa] shadow-lg" : ""
-        } flex justify-end gap-4 lg:gap-0 lg:justify-between items-center`}
+        }`}
       >
-        <div className="logo" onClick={scrollTop}>
-          <Link to="/">
-            <FaStudiovinari className="h-[60px] w-[60px] hidden lg:block" />
-          </Link>
-          <Link to="/" className="text-2xl mr-2 lg:mr-8 hidden lg:block">
-            Tutorin
-          </Link>
-          <div className="hidden lg:flex gap-6 font-semibold">
-            {navbarStaticLinks.map((link, index) => (
-              <div key={index} className={link.extraClass}>
-                {link.label}
-              </div>
-            ))}
-          </div>
-        </div>
-        <ul className="flex items-center">
-          {navbarLinks.map((link, index) => (
-            <li key={index} className={`${link.extraClass}`}>
-              <Link
-                to={link.path}
-                onClick={() => {
-                  scrollTop();
-                  closeSidebar();
-                }}
-                className={`${
-                  isActive(pathname, link.path)
-                    ? "nav-background border-white text-white"
-                    : ""
-                } py-2 hover:text-blue-300 cursor-pointer`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div
-          onClick={() => {
-            if (isOpen) {
-              closeSidebar();
-            } else {
-              openSidebar();
-            }
-          }}
-          className={`${isOpen ? "hamburger-active" : ""} hamburger`}
+        <nav
+          className={` w-full kontener flex justify-end gap-4 lg:gap-0 lg:justify-between items-center`}
         >
-          <span className="line"></span>
-          <span className="line"></span>
-          <span className="line"></span>
-        </div>
-      </nav>
+          <div className="logo" onClick={scrollTop}>
+            <Link to="/">
+              <FaStudiovinari className="h-[60px] w-[60px] hidden lg:block" />
+            </Link>
+            <Link to="/" className="text-2xl mr-2 lg:mr-8 hidden lg:block">
+              Tutorin
+            </Link>
+            <div className="hidden lg:flex gap-6 font-semibold">
+              {navbarStaticLinks.map((link, index) => (
+                <div key={index} className={link.extraClass}>
+                  {link.label}
+                </div>
+              ))}
+            </div>
+          </div>
+          <ul className="flex items-center">
+            {navbarLinks.map((link, index) => (
+              <li
+                key={index}
+                className={`${link.extraClass} ${
+                  isActive(pathname, link.path)
+                    ? "nav-background border-none text-white"
+                    : " border-black"
+                }`}
+              >
+                <Link
+                  to={link.path}
+                  onClick={() => {
+                    scrollTop();
+                    closeSidebar();
+                  }}
+                  className={`${
+                    isActive(pathname, link.path)
+                      ? "nav-background border-none text-white"
+                      : " border-black"
+                  } py-2 cursor-pointer`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div
+            onClick={() => {
+              if (isOpen) {
+                closeSidebar();
+              } else {
+                openSidebar();
+              }
+            }}
+            className={`${isOpen ? "hamburger-active" : ""} hamburger`}
+          >
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+          </div>
+        </nav>
+      </div>
     </>
   );
 };

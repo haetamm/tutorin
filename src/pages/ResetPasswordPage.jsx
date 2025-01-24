@@ -44,7 +44,7 @@ const ResetPasswordPage = () => {
       </Helmet>
       <section
         className={` ${
-          isMobile ? "" : "container mx-auto"
+          isMobile ? "" : "kontener mx-auto"
         } flex-grow pt-[90px] lg:pt-[95px] xl:pt-[120px]`}
       >
         <div className="flex flex-col md:flex-row">

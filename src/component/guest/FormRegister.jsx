@@ -49,7 +49,7 @@ const FormRegister = ({
       </Helmet>
       <section
         className={` ${
-          isMobile ? "" : "container mx-auto"
+          isMobile ? "" : "kontener mx-auto"
         } flex-grow pt-[80px] lg:pt-[95px] xl:pt-[100px]`}
       >
         <div className="flex flex-col md:flex-row items-center">

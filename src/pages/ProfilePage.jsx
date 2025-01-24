@@ -96,13 +96,13 @@ const ProfilePage = () => {
         <title>{`${name}`}</title>
         <meta name="description" content="Profile page" />
       </Helmet>
-      <div className="ml-16 lg:ml-[210px] h-screen">
-        <div className="container mx-auto bg-white mt-0 pb-5 lg:mb-0 px-1 xl:px-5 lg:pb-0">
+      <div className="ml-16 lg:ml-[210px] h-screen xl:px-3">
+        <div className=" bg-white mt-0 pb-5 lg:mb-0 px-1 xl:px-3 lg:pb-0">
           <div className="grid grid-cols-1 md:grid-cols-[35%,30%,30%] xl:grid-cols-3 gap-0 md:gap-3 xl:gap-[2rem] md:h-screen">
-            <div className="flex flex-col items-center text-center  md:px-3 border-r-none md:border-r-2 border-black md:pt-12">
+            <div className="flex flex-col items-center text-center  md:px-3 xl:px-0 border-r-none md:border-r-2 border-black md:pt-12">
               <img
                 onClick={handleImage}
-                className="rounded-full mt-5 w-56 h-56 cursor-pointer"
+                className="rounded-full mt-5 w-56 h-56 xl:w-72 xl:h-72 cursor-pointer"
                 src={`${image}?timestamp=${new Date().getTime()}`}
                 alt="Profile"
               />

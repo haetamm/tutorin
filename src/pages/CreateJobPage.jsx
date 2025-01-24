@@ -46,7 +46,7 @@ const CreateJobPage = () => {
         <title>Create Request tutor | {name}</title>
         <meta name="description" content="Request tutor page" />
       </Helmet>
-      <div className="ml-16 lg:ml-[210px] p-3 pt-[20px] lg:p-6">
+      <div className="ml-16 lg:ml-[210px] p-3 pt-[20px]">
         <div className="work-form w-full">
           <div className="header h-[48px] flex items-center">
             <div className="mr-2 header-title">Create Request Tutor</div>

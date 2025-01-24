@@ -5,6 +5,7 @@ import { urlPage } from "../../utils/constans";
 import { IoIosMail } from "react-icons/io";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { formatDate } from "../../utils/helper";
+import { statusOption } from "../../utils/select-options";
 
 const CardApplication = ({ job }) => {
   return (
@@ -64,12 +65,11 @@ const CardApplication = ({ job }) => {
             <option value="" className="p-3">
               Status
             </option>
-            <option value="" className="p-3">
-              I got hired
-            </option>
-            <option value="" className="p-3">
-              I withdrew my application
-            </option>
+            {statusOption.map(({ value, label }, index) => (
+              <option key={index} value={value} className="p-3">
+                {label}
+              </option>
+            ))}
           </select>
         </div>
       </div>

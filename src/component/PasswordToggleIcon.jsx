@@ -7,7 +7,7 @@ const PasswordToggleIcon = ({ showPassword, toggleShowPassword }) => {
 
   return (
     <div onClick={toggleShowPassword}>
-      <Icon className="absolute left-3 top-4 h-6 w-6 text-gray-400 cursor-pointer" />
+      <Icon className="absolute left-3 top-4 h-7 w-7 text-gray-400 cursor-pointer" />
     </div>
   );
 };

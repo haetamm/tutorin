@@ -35,10 +35,10 @@ const ForgotPasswordPage = () => {
       </Helmet>
       <section
         className={` ${
-          isMobile ? "" : "container mx-auto"
+          isMobile ? "" : "kontener mx-auto"
         } flex-grow pt-[120px] lg:pt-[120px] xl:pt-[150px]`}
       >
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row ">
           <FormGuestPage
             name="Forgot Password"
             fields={forgotPasswordFields}

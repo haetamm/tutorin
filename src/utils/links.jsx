@@ -24,20 +24,20 @@ export const navbarLinks = [
   {
     path: urlPage.REGISTER_STUDENT,
     label: "STUDENT",
-    extraClass: "hidden md:block border-2 border-black py-1 rounded-md",
+    extraClass: "hidden md:block py-1 rounded-md border-[1px] border-black",
   },
   {
     path: urlPage.REGISTER_TUTOR,
     label: "TEACHER",
-    extraClass: "hidden md:block border-2 border-black py-1 rounded-md",
+    extraClass: "hidden md:block py-1 rounded-md border-[1px] border-black",
   },
 ];
 
 export const navbarStaticLinks = [
-  { label: "Home", extraClass: "cursor-pointer" },
-  { label: "Services", extraClass: "cursor-pointer" },
-  { label: "Blog", extraClass: "cursor-pointer" },
-  { label: "Contact us", extraClass: "cursor-pointer" },
+  { label: "Home", extraClass: "cursor-pointer text-lg" },
+  { label: "Services", extraClass: "cursor-pointer text-lg" },
+  { label: "Blog", extraClass: "cursor-pointer text-lg" },
+  { label: "Contact us", extraClass: "cursor-pointer text-lg" },
 ];
 
 export const sidebarLinks = [
